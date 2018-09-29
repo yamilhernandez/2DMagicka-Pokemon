@@ -125,6 +125,17 @@ public class Player extends CreatureBase {
 
 		}
 
+		if (handler.getKeyManager().keyJustPressed(KeyEvent.VK_X)) {
+
+			for (int i = 0; i < Item.items.length; i++) {
+
+				if (Item.items[i] != null) {
+					inventory.addItem(Item.items[i]);
+				}
+			}
+
+		}
+
 		// Inventory
 		inventory.tick();
 
