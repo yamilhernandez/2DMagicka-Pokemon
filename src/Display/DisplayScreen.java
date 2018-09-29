@@ -10,21 +10,19 @@ public class DisplayScreen {
 	private Canvas canvas;
 
 	private URL iconURL;
-	
+
 	private String title;
 	private int width, height;
-	
-	public DisplayScreen(String title, int width, int height){
+
+	public DisplayScreen(String title, int width, int height) {
 		this.title = title;
 		this.width = width;
 		this.height = height;
 
-
-
 		createDisplay();
 	}
-	
-	private void createDisplay(){
+
+	private void createDisplay() {
 		frame = new JFrame(title);
 		frame.setSize(width, height);
 		frame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
@@ -32,6 +30,7 @@ public class DisplayScreen {
 		frame.setLocationRelativeTo(null);
 		frame.setVisible(true);
 		frame.setBackground(Color.black);
+		frame.setFocusTraversalKeysEnabled(false);
 
 		iconURL = getClass().getResource("/Sheets/icon.png");
 		ImageIcon icon = new ImageIcon(iconURL);
@@ -43,17 +42,17 @@ public class DisplayScreen {
 		canvas.setMinimumSize(new Dimension(width, height));
 		canvas.setFocusable(false);
 		canvas.setBackground(Color.black);
-		
+
 		frame.add(canvas);
 		frame.pack();
 	}
 
-	public Canvas getCanvas(){
+	public Canvas getCanvas() {
 		return canvas;
 	}
-	
-	public JFrame getFrame(){
+
+	public JFrame getFrame() {
 		return frame;
 	}
-	
+
 }

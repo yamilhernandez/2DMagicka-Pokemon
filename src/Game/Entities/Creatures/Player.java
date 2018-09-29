@@ -1,6 +1,7 @@
 package Game.Entities.Creatures;
 
 import Game.Entities.EntityBase;
+import Game.GameStates.GameState;
 import Game.GameStates.State;
 import Game.Inventories.Inventory;
 import Game.Items.Item;
@@ -115,6 +116,13 @@ public class Player extends CreatureBase {
 
 		if (handler.getKeyManager().keyJustPressed(KeyEvent.VK_SHIFT)) {
 			health++;
+
+		}
+
+		if (handler.getKeyManager().keyJustPressed(KeyEvent.VK_TAB)) {
+
+			handler.setWorld(GameState.caveWorld);
+
 		}
 
 		// Inventory

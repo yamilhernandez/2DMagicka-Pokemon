@@ -10,49 +10,47 @@ import Worlds.BaseWorld;
  */
 public class Handler {
 
-    private Game game;
-    private BaseWorld world;
+	private Game game;
+	private BaseWorld world;
 
-    public Handler(Game game){
-        this.game = game;
-    }
+	public Handler(Game game) {
+		this.game = game;
+	}
 
-    public GameCamera getGameCamera(){
-        return game.getGameCamera();
-    }
+	public GameCamera getGameCamera() {
+		return game.getGameCamera();
+	}
 
-    public KeyManager getKeyManager(){
-        return game.getKeyManager();
-    }
+	public KeyManager getKeyManager() {
+		return game.getKeyManager();
+	}
 
-    public MouseManager getMouseManager(){
-        return game.getMouseManager();
-    }
+	public MouseManager getMouseManager() {
+		return game.getMouseManager();
+	}
 
-    public int getWidth(){
-        return game.getWidth();
-    }
+	public int getWidth() {
+		return game.getWidth();
+	}
 
-    public int getHeight(){
-        return game.getHeight();
-    }
+	public int getHeight() {
+		return game.getHeight();
+	}
 
-    public Game getGame() {
-        return game;
-    }
+	public Game getGame() {
+		return game;
+	}
 
-    public void setGame(Game game) {
-        this.game = game;
-    }
+	public void setGame(Game game) {
+		this.game = game;
+	}
 
-    public BaseWorld getWorld() {
-        return world;
-    }
+	public BaseWorld getWorld() {
+		return world;
+	}
 
-    public void setWorld(BaseWorld world) {
-        this.world = world;
-    }
-
-
+	public void setWorld(BaseWorld world) {
+		this.world = world;
+	}
 
 }
