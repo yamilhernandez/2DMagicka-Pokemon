@@ -31,6 +31,7 @@ public class Images {
     public static BufferedImage inventory;
     public static BufferedImage title;
     public static BufferedImage door;
+    public static BufferedImage gold;
     public static BufferedImage E;
     public static BufferedImage EP;
     public static BufferedImage Pause;
@@ -92,10 +93,10 @@ public class Images {
 
             loading = ImageIO.read(getClass().getResourceAsStream("/Sheets/loading.png"));
             spellGUI = ImageIO.read(getClass().getResourceAsStream("/Sheets/SpellGUI.png"));
-
             inventory = ImageIO.read(getClass().getResourceAsStream("/Sheets/guit.png"));
             title = ImageIO.read(getClass().getResourceAsStream("/Sheets/Title.png"));
             door = ImageIO.read(getClass().getResourceAsStream("/Sheets/Door.png"));
+            gold = ImageIO.read(getClass().getResourceAsStream("/Sheets/Coin.png"));
             E = ImageIO.read(getClass().getResourceAsStream("/Buttons/E.png"));
             EP = ImageIO.read(getClass().getResourceAsStream("/Buttons/EP.png"));
             Pause = ImageIO.read(getClass().getResourceAsStream("/Buttons/Pause.png"));
