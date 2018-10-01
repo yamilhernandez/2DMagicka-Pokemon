@@ -47,6 +47,8 @@ public class Images {
     public static BufferedImage loading;
     public static BufferedImage spellGUI;
     public static BufferedImage key;
+    public static BufferedImage chest;
+    public static BufferedImage chest2;
 
 
     public Images() {
@@ -93,7 +95,8 @@ public class Images {
         try {
         	
         	key =ImageIO.read(getClass().getResourceAsStream("/Sheets/key.png"));
-
+        	chest = ImageIO.read(getClass().getResourceAsStream("/Sheets/chest.png"));
+        	chest2 = ImageIO.read(getClass().getResourceAsStream("/Sheets/chest2.png"));
             loading = ImageIO.read(getClass().getResourceAsStream("/Sheets/loading.png"));
             spellGUI = ImageIO.read(getClass().getResourceAsStream("/Sheets/SpellGUI.png"));
             inventory = ImageIO.read(getClass().getResourceAsStream("/Sheets/guit.png"));

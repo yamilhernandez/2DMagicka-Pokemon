@@ -4,6 +4,7 @@ import java.util.Random;
 
 import Game.Entities.Creatures.Player;
 import Game.Entities.Creatures.SkelyEnemy;
+import Game.Entities.Statics.Chest;
 import Game.Entities.Statics.Door;
 import Game.Entities.Statics.Rock;
 import Game.Entities.Statics.Tree;
@@ -37,12 +38,16 @@ public class World1 extends BaseWorld {
 		entityManager.addEntity(new Rock(handler, 700, 83));
 		entityManager.addEntity(new Door(handler, 100, 0, GameState.caveWorld));
 		entityManager.addEntity(new SkelyEnemy(handler, 1250, 500));
-
+		entityManager.addEntity(new Chest(handler, rand.nextInt
+				(this.getWidth() * 64 - 128), rand.nextInt(this.getHeight() * 64 - 128)));
+		entityManager.addEntity(new Chest(handler, rand.nextInt
+				(this.getWidth() * 64 - 128), rand.nextInt(this.getHeight() * 64 - 128)));
 		entityManager.getPlayer().setX(spawnX);
 		entityManager.getPlayer().setY(spawnY);
 
 		itemManager.addItem(Item.goldCoin.createNew(rand.nextInt(this.getWidth() * 64 - 64),
 				rand.nextInt(this.getHeight() * 64 - 64), 1));
+		
 
 	}
 
