@@ -17,6 +17,7 @@ import Main.Handler;
 public class World1 extends BaseWorld {
 
 	private Handler handler;
+	private Random rand;
 
 //    private BaseWorld caveWorld;
 
@@ -25,7 +26,7 @@ public class World1 extends BaseWorld {
 		this.handler = handler;
 
 //        caveWorld = new CaveWorld(handler,"res/Maps/caveMap.map",player);
-
+		rand = new Random();
 		entityManager.addEntity(new Tree(handler, 100, 250));
 		entityManager.addEntity(new Rock(handler, 100, 450));
 		entityManager.addEntity(new Tree(handler, 533, 276));
@@ -39,6 +40,9 @@ public class World1 extends BaseWorld {
 
 		entityManager.getPlayer().setX(spawnX);
 		entityManager.getPlayer().setY(spawnY);
+
+		itemManager.addItem(
+				Item.goldCoin.createNew(rand.nextInt(this.getWidth() * 64), rand.nextInt(this.getHeight() * 64), 1));
 
 	}
 

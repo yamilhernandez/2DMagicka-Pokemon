@@ -68,6 +68,7 @@ public class Player extends CreatureBase {
 
 		inventory = new Inventory(handler);
 		spellGUI = new SpellCastUI(handler);
+
 	}
 
 	@Override

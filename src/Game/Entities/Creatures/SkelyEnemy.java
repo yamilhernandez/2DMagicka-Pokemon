@@ -49,6 +49,7 @@ public class SkelyEnemy extends CreatureBase {
 		animUp = new Animation(animWalkingSpeed, Images.SkelyEnemy_back);
 
 		Skelyinventory = new Inventory(handler);
+
 	}
 
 	@Override
