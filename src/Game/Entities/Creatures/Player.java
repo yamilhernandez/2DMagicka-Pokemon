@@ -54,7 +54,7 @@ public class Player extends CreatureBase {
 		bounds.y = 18 * 2;
 		bounds.width = 16 * 2;
 		bounds.height = 14 * 2;
-		health = 75;
+		health = 100;
 		attack = 2;
 
 		animDown = new Animation(animWalkingSpeed, Images.player_front);
@@ -86,6 +86,10 @@ public class Player extends CreatureBase {
 		// Movement
 		getInput();
 		move();
+
+		if (health > 100) {
+			health = 100;
+		}
 		handler.getGameCamera().centerOnEntity(this);
 
 		if (!fcactive) {
