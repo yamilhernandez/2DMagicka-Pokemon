@@ -1,9 +1,14 @@
 package Worlds;
 
+import java.util.Random;
+
 import Game.Entities.Creatures.Player;
 import Game.Entities.Creatures.SkelyEnemy;
-import Game.Entities.Statics.*;
+import Game.Entities.Statics.Door;
+import Game.Entities.Statics.Rock;
+import Game.Entities.Statics.Tree;
 import Game.GameStates.GameState;
+import Game.Items.Item;
 import Main.Handler;
 
 /**
@@ -12,11 +17,13 @@ import Main.Handler;
 public class World1 extends BaseWorld {
 
 	private Handler handler;
+
 //    private BaseWorld caveWorld;
 
 	public World1(Handler handler, String path, Player player) {
 		super(handler, path, player);
 		this.handler = handler;
+
 //        caveWorld = new CaveWorld(handler,"res/Maps/caveMap.map",player);
 
 		entityManager.addEntity(new Tree(handler, 100, 250));
@@ -32,6 +39,7 @@ public class World1 extends BaseWorld {
 
 		entityManager.getPlayer().setX(spawnX);
 		entityManager.getPlayer().setY(spawnY);
+
 	}
 
 }

@@ -46,6 +46,7 @@ public class Images {
     public static BufferedImage[] FireBallDown;
     public static BufferedImage loading;
     public static BufferedImage spellGUI;
+    public static BufferedImage key;
 
 
     public Images() {
@@ -90,6 +91,8 @@ public class Images {
 
 
         try {
+        	
+        	key =ImageIO.read(getClass().getResourceAsStream("/Sheets/key.png"));
 
             loading = ImageIO.read(getClass().getResourceAsStream("/Sheets/loading.png"));
             spellGUI = ImageIO.read(getClass().getResourceAsStream("/Sheets/SpellGUI.png"));

@@ -5,6 +5,7 @@ import Main.Handler;
 
 import java.awt.*;
 import java.awt.image.BufferedImage;
+import java.util.Random;
 
 /**
  * Created by Elemental on 1/2/2017.
@@ -31,6 +32,7 @@ public class Item {
 	public static Item rockItem = new Item(Images.blocks[14], "Rock", 1);
 	public static Item fireRuneItem = new Item(Images.Runes[2], "Fire Rune", 2);
 	public static Item goldCoin = new Item(Images.gold, "Gold Coin", 3);
+	public static Item skullKey = new Item(Images.key, "Skull Key ", 4);
 
 	// class
 
@@ -43,6 +45,7 @@ public class Item {
 		bounds = new Rectangle(x, y, ITEMWIDTH, ITEMWEIGHT);
 
 		items[id] = this;
+
 	}
 
 	public Item(BufferedImage texture, String name, int id, int height, int width) {
@@ -56,6 +59,7 @@ public class Item {
 		bounds = new Rectangle(x, y, ITEMWIDTH, ITEMWEIGHT);
 
 		items[id] = this;
+
 	}
 
 	public void tick() {
