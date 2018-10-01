@@ -39,12 +39,11 @@ public class World1 extends BaseWorld {
 		entityManager.addEntity(new Door(handler, 100, 0, GameState.caveWorld));
 		entityManager.addEntity(new SkelyEnemy(handler, 1250, 500));
 		entityManager.addEntity(new Chest(handler, rand.nextInt
-				(this.getWidth() * 64 - 128), rand.nextInt(this.getHeight() * 64 - 128)));
+				(this.getWidth() * 64 - 300), rand.nextInt(this.getHeight() * 64 - 300)));
 		entityManager.addEntity(new Chest(handler, rand.nextInt
-				(this.getWidth() * 64 - 128), rand.nextInt(this.getHeight() * 64 - 128)));
+				(this.getWidth() * 64 - 300), rand.nextInt(this.getHeight() * 64 - 300)));
 		entityManager.getPlayer().setX(spawnX);
 		entityManager.getPlayer().setY(spawnY);
-
 		itemManager.addItem(Item.goldCoin.createNew(rand.nextInt(this.getWidth() * 64 - 64),
 				rand.nextInt(this.getHeight() * 64 - 64), 1));
 		
