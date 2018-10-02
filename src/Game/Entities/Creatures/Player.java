@@ -38,7 +38,7 @@ public class Player extends CreatureBase {
 	private Boolean LaunchedFireBallU = false;
 	private Boolean LaunchedFireBallD = false;
 	private Boolean attacking = false;
-
+	private Boolean talking = false;
 	private int animWalkingSpeed = 150;
 	private int animFireSpeed = 250;
 	private int FireSpeed = 2;
@@ -140,7 +140,7 @@ public class Player extends CreatureBase {
 			}
 
 		}
-
+		this.checkTakling();
 		// Inventory
 		inventory.tick();
 
@@ -268,6 +268,13 @@ public class Player extends CreatureBase {
 		State.setState(handler.getGame().menuState);
 	}
 
+	public void checkTakling() {
+		if (talking)
+
+			this.speed = 0;
+
+	}
+
 	private void getInput() {
 		xMove = 0;
 		yMove = 0;
@@ -380,5 +387,13 @@ public class Player extends CreatureBase {
 
 	public SpellCastUI getSpellGUI() {
 		return spellGUI;
+	}
+
+	public Boolean getTalking() {
+		return talking;
+	}
+
+	public void setTalking(Boolean talking) {
+		this.talking = talking;
 	}
 }
