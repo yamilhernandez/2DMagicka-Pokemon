@@ -2,6 +2,7 @@ package Worlds;
 
 import java.util.Random;
 
+import Game.Entities.Creatures.Humanoid;
 import Game.Entities.Creatures.Player;
 import Game.Entities.Creatures.SkelyEnemy;
 import Game.Entities.Statics.Chest;
@@ -37,6 +38,7 @@ public class World1 extends BaseWorld {
 		entityManager.addEntity(new Tree(handler, 77, 700));
 		entityManager.addEntity(new Rock(handler, 700, 83));
 		entityManager.addEntity(new Door(handler, 100, 0, GameState.caveWorld));
+		entityManager.addEntity(new Humanoid(handler, 256, 256, GameState.caveWorld));
 		entityManager.addEntity(new SkelyEnemy(handler, 1250, 500));
 		entityManager.addEntity(new Chest(handler, rand.nextInt((this.getWidth() * 64 - 64) + 1) + 64,
 				rand.nextInt((this.getHeight() * 64 - 64) + 1) + 64));

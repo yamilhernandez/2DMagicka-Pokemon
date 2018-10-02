@@ -77,6 +77,10 @@ public class Images {
 		SkelyEnemy_right = new BufferedImage[4];
 		SkelyEnemy_front = new BufferedImage[4];
 		SkelyEnemy_back = new BufferedImage[4];
+		humanoid_front = new BufferedImage[4];
+		humanoid_back = new BufferedImage[4];
+		humanoid_left = new BufferedImage[4];
+		humanoid_right = new BufferedImage[4];
 
 		butstart = new BufferedImage[3];
 		particleSmoke = new BufferedImage[3];
