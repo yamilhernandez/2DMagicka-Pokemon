@@ -94,8 +94,15 @@ public class Humanoid extends StaticEntity {
 					g.setColor(Color.blue);
 					g.fillRect((int) (x - handler.getGameCamera().getxOffset()) + 40,
 							(int) (y - handler.getGameCamera().getyOffset()) - 40, 64, 64);
+					counter = 0;
 
 				} else {
+					try {
+						Thread.sleep(2000);
+					} catch (InterruptedException e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+					}
 					selected = false;
 					handler.getWorld().getEntityManager().getPlayer().setTalking(false);
 				}
