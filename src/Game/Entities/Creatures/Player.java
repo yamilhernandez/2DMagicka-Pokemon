@@ -73,6 +73,7 @@ public class Player extends CreatureBase {
 
 	@Override
 	public void tick() {
+
 		// Animations
 		animDown.tick();
 		animUp.tick();
@@ -85,7 +86,9 @@ public class Player extends CreatureBase {
 
 		// Movement
 		getInput();
-		move();
+
+		if (!talking)
+			move();
 
 		if (health > 100) {
 			health = 100;
@@ -140,7 +143,7 @@ public class Player extends CreatureBase {
 			}
 
 		}
-		this.checkTakling();
+
 		// Inventory
 		inventory.tick();
 
@@ -266,13 +269,6 @@ public class Player extends CreatureBase {
 	public void die() {
 		System.out.println("You lose");
 		State.setState(handler.getGame().menuState);
-	}
-
-	public void checkTakling() {
-		if (talking)
-
-			this.speed = 0;
-
 	}
 
 	private void getInput() {

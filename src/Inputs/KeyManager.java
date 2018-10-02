@@ -3,6 +3,8 @@ package Inputs;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 
+import javafx.scene.input.KeyCode;
+
 public class KeyManager implements KeyListener {
 
 	private boolean[] keys, justPressed, cantPress;
@@ -49,6 +51,7 @@ public class KeyManager implements KeyListener {
 		if (e.getKeyCode() < 0 || e.getKeyCode() >= keys.length)
 			return;
 		keys[e.getKeyCode()] = true;
+
 	}
 
 	@Override

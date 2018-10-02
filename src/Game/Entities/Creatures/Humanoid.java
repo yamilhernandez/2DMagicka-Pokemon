@@ -5,6 +5,8 @@ import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.Rectangle;
 
+import com.sun.glass.events.KeyEvent;
+
 import Game.Entities.Statics.StaticEntity;
 import Main.Handler;
 import Resources.Images;
@@ -12,7 +14,9 @@ import Worlds.BaseWorld;
 
 public class Humanoid extends StaticEntity {
 	private BaseWorld world;
-	private Boolean EP = false;
+
+	private int counter = 0;
+	private boolean selected = false;
 
 	public Humanoid(Handler handler, float x, float y, BaseWorld world) {
 		super(handler, x, y, 64, 64);
@@ -21,13 +25,14 @@ public class Humanoid extends StaticEntity {
 
 	@Override
 	public void tick() {
-
-		if (handler.getKeyManager().attbut) {
-			EP = true;
-
-		} else if (!handler.getKeyManager().attbut) {
-			EP = false;
+		if (handler.getKeyManager().keyJustPressed(KeyEvent.VK_E)) {
+			selected = true;
+			counter++;
 		}
+
+		if (health < 100)
+			health = 100;
+
 		// TODO Auto-generated method stub
 
 	}
@@ -72,18 +77,39 @@ public class Humanoid extends StaticEntity {
 				g.drawImage(Images.exlcamationMark, (int) (x - handler.getGameCamera().getxOffset()),
 						(int) (y - handler.getGameCamera().getyOffset() - 64), 64, 64, null);
 
-			if (EP) {
+			if (selected) {
 				handler.getWorld().getEntityManager().getPlayer().setTalking(true);
 
+				if (counter == 1) {
+					g.setColor(Color.white);
+					g.fillRect((int) (x - handler.getGameCamera().getxOffset()) + 40,
+							(int) (y - handler.getGameCamera().getyOffset()) - 40, 64, 64);
+
+				} else if (counter == 2) {
+					g.setColor(Color.red);
+					g.fillRect((int) (x - handler.getGameCamera().getxOffset()) + 40,
+							(int) (y - handler.getGameCamera().getyOffset()) - 40, 64, 64);
+
+				} else if (counter == 3) {
+					g.setColor(Color.blue);
+					g.fillRect((int) (x - handler.getGameCamera().getxOffset()) + 40,
+							(int) (y - handler.getGameCamera().getyOffset()) - 40, 64, 64);
+
+				} else {
+					selected = false;
+					handler.getWorld().getEntityManager().getPlayer().setTalking(false);
+				}
 			}
 
+		} else {
+			counter = 0;
 		}
 
-		g2d.setColor(Color.red);
-		g2d.draw(getBoundsTop());
-		g2d.draw(getBoundsBot());
-		g2d.draw(getBoundsLeft());
-		g2d.draw(getBoundsRight());
+//		g2d.setColor(Color.red);
+//		g2d.draw(getBoundsTop());
+//		g2d.draw(getBoundsBot());
+//		g2d.draw(getBoundsLeft());
+//		g2d.draw(getBoundsRight());
 
 	}
 
