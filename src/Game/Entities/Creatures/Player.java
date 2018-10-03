@@ -126,6 +126,14 @@ public class Player extends CreatureBase {
 			health++;
 
 		}
+		if (handler.getKeyManager().keyJustPressed(KeyEvent.VK_Z)) {
+			
+			if(inventory.getInventoryItems().get(5).getCount()>= 1) {
+				inventory.deleteItem(Item.items[5]);
+				attack = attack +5;
+			}
+			
+		}
 
 		if (handler.getKeyManager().keyJustPressed(KeyEvent.VK_TAB)) {
 

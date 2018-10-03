@@ -54,7 +54,7 @@ public class Images {
 	public static BufferedImage chest;
 	public static BufferedImage chest2;
 	public static BufferedImage exlcamationMark;
-
+	public static BufferedImage dmgPotion;
 	public Images() {
 
 		SpriteSheet newsheet = new SpriteSheet(Images.loadImage("/Sheets/SpriteSheet.png"));
@@ -99,7 +99,7 @@ public class Images {
 		try {
 
 			key = ImageIO.read(getClass().getResourceAsStream("/Sheets/key.png"));
-
+			dmgPotion = ImageIO.read(getClass().getResourceAsStream("/Sheets/damagePotion.png"));
 			exlcamationMark = ImageIO.read(getClass().getResourceAsStream("/Sheets/excla.png"));
 			chest = ImageIO.read(getClass().getResourceAsStream("/Sheets/chest.png"));
 			chest2 = ImageIO.read(getClass().getResourceAsStream("/Sheets/chest2.png"));

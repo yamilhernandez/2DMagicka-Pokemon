@@ -26,8 +26,6 @@ public class Humanoid extends StaticEntity {
 
 	@Override
 	public void tick() {
-
-		System.out.println(counter);
 		if (handler.getKeyManager().keyJustPressed(KeyEvent.VK_E)) {
 			selected = true;
 			counter++;

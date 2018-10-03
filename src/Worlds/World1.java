@@ -48,7 +48,8 @@ public class World1 extends BaseWorld {
 		entityManager.getPlayer().setY(spawnY);
 		itemManager.addItem(Item.goldCoin.createNew(rand.nextInt((this.getWidth() * 64 - 64) + 1) + 64,
 				rand.nextInt((this.getHeight() * 64 - 64) + 1) + 64, 1));
-
+		itemManager.addItem(Item.dmgPotion.createNew(rand.nextInt((this.getWidth() * 64 - 64) + 1) + 64,
+				rand.nextInt((this.getHeight() * 64 - 64) + 1) + 64, 1));
 	}
 
 }
