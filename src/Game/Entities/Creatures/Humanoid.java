@@ -21,10 +21,13 @@ public class Humanoid extends StaticEntity {
 	public Humanoid(Handler handler, float x, float y, BaseWorld world) {
 		super(handler, x, y, 64, 64);
 		// TODO Auto-generated constructor stub
+
 	}
 
 	@Override
 	public void tick() {
+
+		System.out.println(counter);
 		if (handler.getKeyManager().keyJustPressed(KeyEvent.VK_E)) {
 			selected = true;
 			counter++;
@@ -94,17 +97,11 @@ public class Humanoid extends StaticEntity {
 					g.setColor(Color.blue);
 					g.fillRect((int) (x - handler.getGameCamera().getxOffset()) + 40,
 							(int) (y - handler.getGameCamera().getyOffset()) - 40, 64, 64);
-					counter = 0;
 
-				} else {
-					try {
-						Thread.sleep(2000);
-					} catch (InterruptedException e) {
-						// TODO Auto-generated catch block
-						e.printStackTrace();
-					}
-					selected = false;
+				} else if (counter > 3) {
 					handler.getWorld().getEntityManager().getPlayer().setTalking(false);
+					counter = 0;
+					selected = false;
 				}
 			}
 
@@ -112,11 +109,11 @@ public class Humanoid extends StaticEntity {
 			counter = 0;
 		}
 
-//		g2d.setColor(Color.red);
-//		g2d.draw(getBoundsTop());
-//		g2d.draw(getBoundsBot());
-//		g2d.draw(getBoundsLeft());
-//		g2d.draw(getBoundsRight());
+		// g2d.setColor(Color.red);
+		// g2d.draw(getBoundsTop());
+		// g2d.draw(getBoundsBot());
+		// g2d.draw(getBoundsLeft());
+		// g2d.draw(getBoundsRight());
 
 	}
 
