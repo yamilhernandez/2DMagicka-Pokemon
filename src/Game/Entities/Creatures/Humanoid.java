@@ -83,18 +83,8 @@ public class Humanoid extends StaticEntity {
 				if (!alreadyTalked) {
 					handler.getWorld().getEntityManager().getPlayer().setTalking(true);
 
-					if (counter == 1) {
-						g.drawImage(Images.bubble[0], (int) (x - handler.getGameCamera().getxOffset()) + 40,
-								(int) (y - handler.getGameCamera().getyOffset()) - 140, null);
-
-					} else if (counter == 2) {
-						g.drawImage(Images.bubble[1], (int) (x - handler.getGameCamera().getxOffset()) + 40,
-								(int) (y - handler.getGameCamera().getyOffset()) - 140, null);
-					} else if (counter == 3) {
-						g.drawImage(Images.bubble[2], (int) (x - handler.getGameCamera().getxOffset()) + 40,
-								(int) (y - handler.getGameCamera().getyOffset()) - 140, null);
-					} else if (counter == 4) {
-						g.drawImage(Images.bubble[3], (int) (x - handler.getGameCamera().getxOffset()) + 40,
+					if (counter <= Images.bubble.length) {
+						g.drawImage(Images.bubble[counter - 1], (int) (x - handler.getGameCamera().getxOffset()) + 40,
 								(int) (y - handler.getGameCamera().getyOffset()) - 140, null);
 
 					} else if (counter > 4) {
