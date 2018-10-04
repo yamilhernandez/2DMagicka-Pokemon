@@ -55,6 +55,8 @@ public class Images {
 	public static BufferedImage chest2;
 	public static BufferedImage exlcamationMark;
 	public static BufferedImage dmgPotion;
+	public static BufferedImage[] bubble;
+
 	public Images() {
 
 		SpriteSheet newsheet = new SpriteSheet(Images.loadImage("/Sheets/SpriteSheet.png"));
@@ -65,6 +67,7 @@ public class Images {
 		SpriteSheet FireBallUpsheet = new SpriteSheet(Images.loadImage("/Sheets/FireBallUp.png"));
 		SpriteSheet FireBallDownsheet = new SpriteSheet(Images.loadImage("/Sheets/FireBallDown.png"));
 		SpriteSheet humanoidSheet = new SpriteSheet(Images.loadImage("/Sheets/humanoid.png"));
+		SpriteSheet Bubble_sheet = new SpriteSheet(Images.loadImage("/Sheets/bubble.png"));
 
 		blocks = new BufferedImage[15];
 
@@ -90,6 +93,7 @@ public class Images {
 		BTitle = new BufferedImage[2];
 		Options = new BufferedImage[2];
 		Runes = new BufferedImage[36];
+		bubble = new BufferedImage[4];
 
 		FireBallLeft = new BufferedImage[6];
 		FireBallRight = new BufferedImage[6];
@@ -257,6 +261,11 @@ public class Images {
 			humanoid_left[0] = humanoidSheet.crop(16, 64, 32, 60);
 			humanoid_right[0] = humanoidSheet.crop(16, 128, 32, 60);
 			humanoid_back[0] = humanoidSheet.crop(16, 192, 32, 60);
+
+			bubble[0] = Bubble_sheet.crop(0, 0, 200, 150);
+			bubble[1] = Bubble_sheet.crop(200, 0, 200, 150);
+			bubble[2] = Bubble_sheet.crop(400, 0, 200, 150);
+			bubble[3] = Bubble_sheet.crop(600, 0, 200, 150);
 
 		} catch (IOException e) {
 			e.printStackTrace();

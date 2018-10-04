@@ -1,6 +1,5 @@
 package Game.Entities.Creatures;
 
-import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.Rectangle;
@@ -17,6 +16,7 @@ public class Humanoid extends StaticEntity {
 
 	private int counter = 0;
 	private boolean selected = false;
+	private boolean alreadyTalked = false;
 
 	public Humanoid(Handler handler, float x, float y, BaseWorld world) {
 		super(handler, x, y, 64, 64);
@@ -74,37 +74,40 @@ public class Humanoid extends StaticEntity {
 				|| getBoundsTop().intersects(handler.getWorld().getEntityManager().getPlayer().getCollisionBounds(0, 0))
 				|| getBoundsBot()
 						.intersects(handler.getWorld().getEntityManager().getPlayer().getCollisionBounds(0, 0))) {
-			if (!handler.getWorld().getEntityManager().getPlayer().getTalking())
+			if (!handler.getWorld().getEntityManager().getPlayer().getTalking() && !alreadyTalked)
 				g.drawImage(Images.exlcamationMark, (int) (x - handler.getGameCamera().getxOffset()),
 						(int) (y - handler.getGameCamera().getyOffset() - 64), 64, 64, null);
 
 			if (selected) {
-				handler.getWorld().getEntityManager().getPlayer().setTalking(true);
 
-				if (counter == 1) {
-					g.setColor(Color.white);
-					g.fillRect((int) (x - handler.getGameCamera().getxOffset()) + 40,
-							(int) (y - handler.getGameCamera().getyOffset()) - 40, 64, 64);
+				if (!alreadyTalked) {
+					handler.getWorld().getEntityManager().getPlayer().setTalking(true);
 
-				} else if (counter == 2) {
-					g.setColor(Color.red);
-					g.fillRect((int) (x - handler.getGameCamera().getxOffset()) + 40,
-							(int) (y - handler.getGameCamera().getyOffset()) - 40, 64, 64);
+					if (counter == 1) {
+						g.drawImage(Images.bubble[0], (int) (x - handler.getGameCamera().getxOffset()) + 40,
+								(int) (y - handler.getGameCamera().getyOffset()) - 140, null);
 
-				} else if (counter == 3) {
-					g.setColor(Color.blue);
-					g.fillRect((int) (x - handler.getGameCamera().getxOffset()) + 40,
-							(int) (y - handler.getGameCamera().getyOffset()) - 40, 64, 64);
+					} else if (counter == 2) {
+						g.drawImage(Images.bubble[1], (int) (x - handler.getGameCamera().getxOffset()) + 40,
+								(int) (y - handler.getGameCamera().getyOffset()) - 140, null);
+					} else if (counter == 3) {
+						g.drawImage(Images.bubble[2], (int) (x - handler.getGameCamera().getxOffset()) + 40,
+								(int) (y - handler.getGameCamera().getyOffset()) - 140, null);
+					} else if (counter == 4) {
+						g.drawImage(Images.bubble[3], (int) (x - handler.getGameCamera().getxOffset()) + 40,
+								(int) (y - handler.getGameCamera().getyOffset()) - 140, null);
 
-				} else if (counter > 3) {
-					handler.getWorld().getEntityManager().getPlayer().setTalking(false);
-					counter = 0;
-					selected = false;
+					} else if (counter > 4) {
+						handler.getWorld().getEntityManager().getPlayer().setTalking(false);
+						counter = 0;
+						selected = false;
+						alreadyTalked = true;
+					}
 				}
-			}
 
-		} else {
-			counter = 0;
+			} else {
+				counter = 0;
+			}
 		}
 
 		// g2d.setColor(Color.red);
