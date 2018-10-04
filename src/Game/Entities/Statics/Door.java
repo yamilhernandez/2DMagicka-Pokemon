@@ -39,25 +39,32 @@ public class Door extends StaticEntity {
 	@Override
 	public void tick() {
 
-		if (isBeinghurt()) {
-			setHealth(10000000);
-		}
+		if (visible) {
 
-		if (handler.getKeyManager().attbut) {
-			EP = true;
+			if (isBeinghurt()) {
+				setHealth(10000000);
+			}
 
-		} else if (!handler.getKeyManager().attbut) {
-			EP = false;
+			if (handler.getKeyManager().attbut) {
+				EP = true;
+
+			} else if (!handler.getKeyManager().attbut) {
+				EP = false;
+			}
 		}
 
 	}
 
 	@Override
 	public void render(Graphics g) {
-		
 
-		g.setColor(Color.black);
-		checkForPlayer(g, handler.getWorld().getEntityManager().getPlayer());
+		if (visible) {
+
+			g.drawImage(Images.door, (int) (x - handler.getGameCamera().getxOffset() + 10),
+					(int) (y - handler.getGameCamera().getyOffset()), width, height, null);
+			g.setColor(Color.black);
+			checkForPlayer(g, handler.getWorld().getEntityManager().getPlayer());
+		}
 	}
 
 	private void checkForPlayer(Graphics g, Player p) {

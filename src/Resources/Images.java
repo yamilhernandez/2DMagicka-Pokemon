@@ -56,6 +56,7 @@ public class Images {
 	public static BufferedImage exlcamationMark;
 	public static BufferedImage dmgPotion;
 	public static BufferedImage[] bubble;
+	public static BufferedImage[] bubble2;
 
 	public Images() {
 
@@ -68,6 +69,7 @@ public class Images {
 		SpriteSheet FireBallDownsheet = new SpriteSheet(Images.loadImage("/Sheets/FireBallDown.png"));
 		SpriteSheet humanoidSheet = new SpriteSheet(Images.loadImage("/Sheets/humanoid.png"));
 		SpriteSheet Bubble_sheet = new SpriteSheet(Images.loadImage("/Sheets/bubble.png"));
+		SpriteSheet Bubble_sheet2 = new SpriteSheet(Images.loadImage("/Sheets/bubble2.png"));
 
 		blocks = new BufferedImage[15];
 
@@ -94,6 +96,7 @@ public class Images {
 		Options = new BufferedImage[2];
 		Runes = new BufferedImage[36];
 		bubble = new BufferedImage[4];
+		bubble2 = new BufferedImage[4];
 
 		FireBallLeft = new BufferedImage[6];
 		FireBallRight = new BufferedImage[6];
@@ -266,6 +269,10 @@ public class Images {
 			bubble[1] = Bubble_sheet.crop(200, 0, 200, 150);
 			bubble[2] = Bubble_sheet.crop(400, 0, 200, 150);
 			bubble[3] = Bubble_sheet.crop(600, 0, 200, 150);
+
+			bubble2[0] = Bubble_sheet2.crop(0, 0, 200, 150);
+			bubble2[1] = Bubble_sheet2.crop(200, 0, 200, 150);
+			bubble2[2] = Bubble_sheet2.crop(400, 0, 200, 150);
 
 		} catch (IOException e) {
 			e.printStackTrace();

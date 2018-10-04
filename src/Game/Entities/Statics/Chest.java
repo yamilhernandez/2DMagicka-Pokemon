@@ -15,46 +15,45 @@ import java.util.Random;
  * Created by Elemental on 1/1/2017.
  */
 public class Chest extends StaticEntity {
-    private File audioFile;
-    private AudioInputStream audioStream;
-    private AudioFormat format;
-    private DataLine.Info info;
-    private Clip audioClip;
-    private Random rand =new Random();
+	private File audioFile;
+	private AudioInputStream audioStream;
+	private AudioFormat format;
+	private DataLine.Info info;
+	private Clip audioClip;
+	private Random rand = new Random();
 
-    public Chest(Handler handler, float x, float y) {
-        super(handler, x, y, Tile.TILEHEIGHT * 2, Tile.TILEWIDTH);
-        bounds.x=-50;
-        bounds.y=-30;
-        bounds.width =70 ;
-        bounds.height = 70;
-        health=2;
+	public Chest(Handler handler, float x, float y) {
+		super(handler, x, y, Tile.TILEHEIGHT * 2, Tile.TILEWIDTH);
+		bounds.x = -50;
+		bounds.y = -30;
+		bounds.width = 70;
+		bounds.height = 70;
+		health = 2;
 
-        try {
-            audioFile = new File("res/music/chestSound.wav");
-            audioStream = AudioSystem.getAudioInputStream(audioFile);
-            format = audioStream.getFormat();
-            info = new DataLine.Info(Clip.class, format);
-            audioClip = (Clip) AudioSystem.getLine(info);
-            audioClip.open(audioStream);
-            audioClip.setMicrosecondPosition(2000);
+		try {
+			audioFile = new File("res/music/chestSound.wav");
+			audioStream = AudioSystem.getAudioInputStream(audioFile);
+			format = audioStream.getFormat();
+			info = new DataLine.Info(Clip.class, format);
+			audioClip = (Clip) AudioSystem.getLine(info);
+			audioClip.open(audioStream);
+			audioClip.setMicrosecondPosition(2000);
 
-        } catch (UnsupportedAudioFileException e) {
-            e.printStackTrace();
-        } catch (IOException e) {
-            e.printStackTrace();
-        } catch (LineUnavailableException e) {
-            e.printStackTrace();
-        }
+		} catch (UnsupportedAudioFileException e) {
+			e.printStackTrace();
+		} catch (IOException e) {
+			e.printStackTrace();
+		} catch (LineUnavailableException e) {
+			e.printStackTrace();
+		}
 
-    }
+	}
 
-
-    @Override
-    public void tick() {
-        if(isBeinghurt()){
-            audioClip.start();
-        }
+	@Override
+	public void tick() {
+		if (isBeinghurt()) {
+			audioClip.start();
+		}
 //        if(!isBeinghurt() && !handler.getKeyManager().attbut){
 //            audioClip.stop();
 //        }
@@ -63,47 +62,44 @@ public class Chest extends StaticEntity {
 //
 //        }
 
-    }
+	}
 
-    @Override
-    public void render(Graphics g) {
-        renderLife(g);
-        g.drawImage(Images.chest,(int)(x-handler.getGameCamera().getxOffset())-64,
-        		(int)(y-handler.getGameCamera().getyOffset())-64,90,90,null);
+	@Override
+	public void render(Graphics g) {
+		renderLife(g);
+		g.drawImage(Images.chest, (int) (x - handler.getGameCamera().getxOffset()) - 64,
+				(int) (y - handler.getGameCamera().getyOffset()) - 64, 90, 90, null);
 
-    }
+	}
 
+	@Override
+	public void die() {
+		handler.getWorld().getItemManager()
+				.addItem(Item.goldCoin.createNew((int) x + bounds.x, (int) y + bounds.y, rand.nextInt(5)));
 
-    
-    @Override
-    public void die() {
-        handler.getWorld().getItemManager().addItem(Item.goldCoin.createNew((int)x + bounds.x,
-        		(int)y + bounds.y,rand.nextInt(5)));
+	}
 
+	public void renderLife(Graphics g) {
+		if (beinghurt && count <= 8) {
+			if (count == 1) {
+				count = 0;
+				beinghurt = false;
+			}
 
-    }
+			g.drawImage(Images.numbers[getHealth()], (int) (x - handler.getGameCamera().getxOffset() + bounds.x),
+					(int) (y - handler.getGameCamera().getyOffset() - getHeight() + (bounds.height + 32)), width,
+					height, null);
+			count++;
 
-    public void renderLife(Graphics g) {
-        if (beinghurt && count <=8){
-            if(count == 1){
-                count = 0;
-                beinghurt=false;
-            }
+		}
+	}
 
-            g.drawImage(Images.numbers[getHealth()],(int)(x-handler.getGameCamera().getxOffset()+bounds.x),
-            		(int)(y-handler.getGameCamera().getyOffset()-getHeight()+(bounds.height+32)),width,height,null);
-            count++;
+	public int getHealth() {
+		return health;
+	}
 
-        }
-    }
-
-
-    public int getHealth() {
-        return health;
-    }
-
-    public void setHealth(int health) {
-        this.health = health;
-    }
+	public void setHealth(int health) {
+		this.health = health;
+	}
 
 }
