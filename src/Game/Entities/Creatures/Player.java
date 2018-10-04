@@ -143,10 +143,11 @@ public class Player extends CreatureBase {
 
 		if (handler.getKeyManager().keyJustPressed(KeyEvent.VK_X)) {
 
-			for (int i = 0; i < Item.items.length; i++) {
+			for (Item i : Item.items) {
 
-				if (Item.items[i] != null) {
-					inventory.addItem(Item.items[i]);
+				if (i != null) {
+					inventory.addItem(i);
+
 				}
 			}
 

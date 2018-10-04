@@ -1,5 +1,6 @@
 package Game.Entities.Creatures;
 
+import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Rectangle;
 
@@ -13,12 +14,13 @@ import Resources.Images;
 import Worlds.BaseWorld;
 
 public class Humanoid extends StaticEntity {
-	private BaseWorld world;
 
 	private int counter = 0;
 	private boolean selected = false;
 	private boolean alreadyTalked = false;
 	private boolean levelComplete = false;
+	private boolean missionStarted = false, firstObejctive = false, secondObjective = false;
+
 	private Door door;
 
 	public Humanoid(Handler handler, float x, float y, BaseWorld world, Door door) {
@@ -33,6 +35,8 @@ public class Humanoid extends StaticEntity {
 	@Override
 	public void tick() {
 
+		System.out.println(missionStarted);
+
 		if (health < 100)
 			health = 100;
 
@@ -40,8 +44,50 @@ public class Humanoid extends StaticEntity {
 
 	}
 
-	@Override
 	public void render(Graphics g) {
+
+		if (missionStarted && !levelComplete) {
+
+			int playerX = (int) (handler.getWorld().getEntityManager().getPlayer().getX()
+					- handler.getGameCamera().getxOffset());
+			int playerY = (int) (handler.getWorld().getEntityManager().getPlayer().getY()
+					- handler.getGameCamera().getyOffset());
+
+			for (Item i : handler.getWorld().getEntityManager().getPlayer().getInventory().getInventoryItems()) {
+				g.setColor(Color.yellow);
+				if (i.getId() == Item.goldCoin.getId()) {
+
+					String c = "";
+
+					if (i.getCount() < 3) {
+						c = "COINS: " + i.getCount();
+
+					} else {
+						c = "COINS:COMPLETE";
+						this.firstObejctive = true;
+
+					}
+
+					g.drawString(c, playerX, playerY - 30);
+
+				}
+				if (i.getId() == Item.skullKey.getId()) {
+					String c = "";
+					if (i.getCount() < 1) {
+
+						c = "SKULL-KEY: " + i.getCount();
+
+					} else {
+						c = "SKULL-KEY:COMPLETE";
+						this.secondObjective = true;
+
+					}
+					g.drawString(c, playerX, playerY - 60);
+
+				}
+			}
+
+		}
 
 		// TODO Auto-generated method stub
 		int imageX = (int) (x - handler.getGameCamera().getxOffset());
@@ -90,11 +136,11 @@ public class Humanoid extends StaticEntity {
 							counter = 0;
 							selected = false;
 							alreadyTalked = true;
+							missionStarted = true;
 						}
 					} else if (alreadyTalked) {
 
-						if (handler.getWorld().getEntityManager().getPlayer().getInventory().getInventoryItems()
-								.contains(Item.skullKey)) {
+						if (this.firstObejctive && this.secondObjective) {
 
 							if (counter < Images.bubble2.length) {
 								g.drawImage(Images.bubble2[counter - 1], imageX + 40, imageY - 140, null);
@@ -103,6 +149,10 @@ public class Humanoid extends StaticEntity {
 							} else {
 								handler.getWorld().getEntityManager().getPlayer().getInventory()
 										.deleteItem(Item.skullKey);
+								for (int i = 0; i < 3; i++)
+									handler.getWorld().getEntityManager().getPlayer().getInventory()
+											.addItem(Item.dmgPotion);
+
 								handler.getWorld().getEntityManager().getPlayer().setTalking(false);
 								door.setVisible(true);
 								selected = false;
