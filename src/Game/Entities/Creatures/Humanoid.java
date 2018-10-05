@@ -35,8 +35,6 @@ public class Humanoid extends StaticEntity {
 	@Override
 	public void tick() {
 
-		System.out.println(missionStarted);
-
 		if (health < 100)
 			health = 100;
 
