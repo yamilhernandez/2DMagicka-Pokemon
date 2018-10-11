@@ -18,17 +18,19 @@ import Main.Handler;
  */
 public class World1 extends BaseWorld {
 
+	public static BaseWorld caveWorld;
 	private Handler handler;
 	private Random rand;
 	private Door door;
 
-//    private BaseWorld caveWorld;
+	// private BaseWorld caveWorld;
 
 	public World1(Handler handler, String path, Player player) {
 		super(handler, path, player);
 		this.handler = handler;
+		caveWorld = new CaveWorld(handler, "res/Maps/caveMap.map", player);
 
-//        caveWorld = new CaveWorld(handler,"res/Maps/caveMap.map",player);
+		// caveWorld = new CaveWorld(handler,"res/Maps/caveMap.map",player);
 		rand = new Random();
 		entityManager.addEntity(new Tree(handler, 100, 250));
 		entityManager.addEntity(new Rock(handler, 100, 450));
@@ -38,8 +40,8 @@ public class World1 extends BaseWorld {
 		entityManager.addEntity(new Rock(handler, 88, 1345));
 		entityManager.addEntity(new Tree(handler, 77, 700));
 		entityManager.addEntity(new Rock(handler, 700, 83));
-		entityManager.addEntity(door = new Door(handler, 100, 0, GameState.caveWorld));
-		entityManager.addEntity(new Humanoid(handler, 256, 256, GameState.caveWorld, door));
+		entityManager.addEntity(door = new Door(handler, 100, 0, caveWorld));
+		entityManager.addEntity(new Humanoid(handler, 256, 256, caveWorld, door));
 		entityManager.addEntity(new SkelyEnemy(handler, 1250, 500));
 		entityManager.addEntity(new Chest(handler, rand.nextInt((this.getWidth() * 64 - 128) + 1) + 128,
 				rand.nextInt((this.getHeight() * 64 - 64) + 1) + 64));
