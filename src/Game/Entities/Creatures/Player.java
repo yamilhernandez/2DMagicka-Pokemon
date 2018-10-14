@@ -8,7 +8,6 @@ import Game.Items.Item;
 import Game.SpellCast.SpellCastUI;
 import Resources.Animation;
 import Resources.Images;
-import Worlds.World1;
 import Main.Handler;
 import java.awt.*;
 import java.awt.event.KeyEvent;
@@ -135,10 +134,18 @@ public class Player extends CreatureBase {
 			}
 
 		}
+//		if (handler.getKeyManager().keyJustPressed(KeyEvent.VK_G)) {
+//			if (inventory.getInventoryItems().get(6).getCount() >= 1) {
+//				inventory.deleteItem(Item.items[5]); 
+//				handler.getWorld().getEntityManager().addEntity((new Companion(handler, super.getX()+20, super.getY()+20)));
+//			}
+			
+//		}
+			
 
 		if (handler.getKeyManager().keyJustPressed(KeyEvent.VK_TAB)) {
 
-			handler.setWorld(World1.caveWorld);
+			handler.setWorld(GameState.world1);
 
 		}
 
@@ -148,8 +155,10 @@ public class Player extends CreatureBase {
 
 				if (i != null) {
 					inventory.addItem(i);
-
 				}
+				//if(i.getCount() == 0) {
+					//inventory.getInventoryItems().add(i);
+				//}
 			}
 
 		}

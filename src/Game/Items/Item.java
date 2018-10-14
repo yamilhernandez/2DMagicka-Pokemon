@@ -34,6 +34,8 @@ public class Item {
 	public static Item goldCoin = new Item(Images.gold, "Gold Coin", 3);
 	public static Item skullKey = new Item(Images.key, "Skull Key ", 4);
 	public static Item dmgPotion = new Item(Images.dmgPotion, "Damage Potion", 5);
+	public static Item pokeBall = new Item(Images.pokeBall, "Pikachu", 6);
+	
 	// class
 
 	public Item(BufferedImage texture, String name, int id) {

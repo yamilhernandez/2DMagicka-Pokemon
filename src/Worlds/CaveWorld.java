@@ -1,5 +1,7 @@
 package Worlds;
 import Game.Entities.Creatures.Player;
+import Game.Entities.Creatures.TrainerEnemy;
+import Game.Entities.Statics.Tree;
 import Main.Handler;
 
 /**
@@ -13,6 +15,11 @@ public class CaveWorld extends BaseWorld{
         super(handler,path,player);
         this.handler = handler;
         this.player=player;
+        
+        
+        
+        
+        entityManager.addEntity(new TrainerEnemy(handler, 1250, 500));
 
     }
 

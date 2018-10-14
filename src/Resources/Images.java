@@ -14,6 +14,9 @@ public class Images {
 	private static final int Bwidth = 64, Bheight = 64;
 	private static final int Rwidth = 56, Rheight = 93;
 	private static final int Fwidth = 512, Fheight = 197;
+	private static final int Pwidth= 33, Pheight =37;
+	private static final int Twidth= 50, Theight =59;
+	
 
 	public static BufferedImage[] blocks;
 	public static BufferedImage[] player_right;
@@ -28,6 +31,14 @@ public class Images {
 	public static BufferedImage[] SkelyEnemy_left;
 	public static BufferedImage[] SkelyEnemy_front;
 	public static BufferedImage[] SkelyEnemy_back;
+	public static BufferedImage[] Pika_right;
+	public static BufferedImage[] Pika_left;
+	public static BufferedImage[] Pika_front;
+	public static BufferedImage[] Pika_back;
+	public static BufferedImage[] Trainer_right;
+	public static BufferedImage[] Trainer_left;
+	public static BufferedImage[] Trainer_front;
+	public static BufferedImage[] Trainer_back;
 	public static BufferedImage[] butstart;
 	public static BufferedImage[] particleSmoke;
 	public static BufferedImage[] items;
@@ -36,6 +47,7 @@ public class Images {
 	public static BufferedImage title;
 	public static BufferedImage door;
 	public static BufferedImage gold;
+	public static BufferedImage pokeBall;
 	public static BufferedImage E;
 	public static BufferedImage EP;
 	public static BufferedImage Pause;
@@ -70,7 +82,9 @@ public class Images {
 		SpriteSheet humanoidSheet = new SpriteSheet(Images.loadImage("/Sheets/humanoid.png"));
 		SpriteSheet Bubble_sheet = new SpriteSheet(Images.loadImage("/Sheets/bubble.png"));
 		SpriteSheet Bubble_sheet2 = new SpriteSheet(Images.loadImage("/Sheets/bubble2.png"));
-
+		SpriteSheet pikaSheet = new SpriteSheet(Images.loadImage("/Sheets/pikaSpritefix.png"));
+		SpriteSheet trainerSheet = new SpriteSheet(Images.loadImage("/Sheets/trainerSprite.png"));
+		
 		blocks = new BufferedImage[15];
 
 		player_left = new BufferedImage[4];
@@ -86,6 +100,14 @@ public class Images {
 		humanoid_back = new BufferedImage[4];
 		humanoid_left = new BufferedImage[4];
 		humanoid_right = new BufferedImage[4];
+		Pika_front = new BufferedImage[4];
+		Pika_back = new BufferedImage[4];
+		Pika_left = new BufferedImage[4];
+		Pika_right = new BufferedImage[4];
+		Trainer_front = new BufferedImage[4];
+		Trainer_back = new BufferedImage[4];
+		Trainer_left = new BufferedImage[4];
+		Trainer_right = new BufferedImage[4];
 
 		butstart = new BufferedImage[3];
 		particleSmoke = new BufferedImage[3];
@@ -125,6 +147,7 @@ public class Images {
 			BTitle[1] = ImageIO.read(getClass().getResourceAsStream("/Buttons/BTitleP.png"));
 			Options[0] = ImageIO.read(getClass().getResourceAsStream("/Buttons/Options.png"));
 			Options[1] = ImageIO.read(getClass().getResourceAsStream("/Buttons/OptionsP.png"));
+			pokeBall = ImageIO.read(getClass().getResourceAsStream("/Sheets/pokeball.png"));
 
 			// icon
 			icon = new ImageIcon(runesheet.crop(Rwidth * 1, Rheight * 0, Rwidth, Rheight));
@@ -264,6 +287,46 @@ public class Images {
 			humanoid_left[0] = humanoidSheet.crop(16, 64, 32, 60);
 			humanoid_right[0] = humanoidSheet.crop(16, 128, 32, 60);
 			humanoid_back[0] = humanoidSheet.crop(16, 192, 32, 60);
+			
+			Pika_front[0] = pikaSheet.crop(58, 11, Pwidth, Pheight);
+			Pika_front[1] = pikaSheet.crop(117, 11,Pwidth , Pheight);
+			Pika_front[2] = pikaSheet.crop(176, 12 , Pwidth, Pheight);
+			Pika_front[3] = pikaSheet.crop(236, 12, 33, 37);
+
+			Pika_left[0] = pikaSheet.crop(59, 70, Pwidth, Pheight);
+			Pika_left[1] = pikaSheet.crop(119, 72, Pwidth, Pheight);
+			Pika_left[2] = pikaSheet.crop(178, 72, Pwidth, Pheight);
+			Pika_left[3] = pikaSheet.crop(238, 72, Pwidth, Pheight);
+
+			Pika_right[0] = pikaSheet.crop(57, 130, Pwidth, Pheight);
+			Pika_right[1] = pikaSheet.crop(117, 131, Pwidth, Pheight);
+			Pika_right[2] = pikaSheet.crop(176, 131, Pwidth, Pheight);
+			Pika_right[3] = pikaSheet.crop(236, 131, Pwidth, Pheight);
+
+			Pika_back[0] = pikaSheet.crop(58, 190, Pwidth, Pheight);
+			Pika_back[1] = pikaSheet.crop(118, 192, Pwidth, Pheight);
+			Pika_back[2] = pikaSheet.crop(177, 192, Pwidth, Pheight);
+			Pika_back[3] = pikaSheet.crop(238, 193, Pwidth, Pheight);
+			
+			Trainer_front[0] = trainerSheet.crop(7, 6, Twidth, Theight);
+			Trainer_front[1] = trainerSheet.crop(70, 6,Twidth , Theight);
+			Trainer_front[2] = trainerSheet.crop(133, 6 , Twidth, Theight);
+			Trainer_front[3] = trainerSheet.crop(198, 6, Twidth, Theight);
+
+			Trainer_left[0] = trainerSheet.crop(7, 71,Twidth, Theight);
+			Trainer_left[1] = trainerSheet.crop(70, 71, Twidth, Theight);
+			Trainer_left[2] = trainerSheet.crop(133, 71, Twidth, Theight);
+			Trainer_left[3] = trainerSheet.crop(198, 71, Twidth, Theight);
+
+			Trainer_right[0] = trainerSheet.crop(7, 136, Twidth, Theight);
+			Trainer_right[1] = trainerSheet.crop(70, 136, Twidth, Theight);
+			Trainer_right[2] = trainerSheet.crop(133, 136, Twidth, Theight);
+			Trainer_right[3] = trainerSheet.crop(198, 136, Twidth, Theight);
+
+			Trainer_back[0] = trainerSheet.crop(7, 196, Twidth, Theight);
+			Trainer_back[1] = trainerSheet.crop(70, 196, Twidth, Theight);
+			Trainer_back[2] = trainerSheet.crop(133, 196, Twidth, Theight);
+			Trainer_back[3] = trainerSheet.crop(198, 196, Twidth, Theight);
 
 			bubble[0] = Bubble_sheet.crop(0, 0, 200, 150);
 			bubble[1] = Bubble_sheet.crop(200, 0, 200, 150);
