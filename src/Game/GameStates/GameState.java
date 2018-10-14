@@ -16,14 +16,16 @@ public class GameState extends State {
 
 	public static BaseWorld world1;
 	public static BaseWorld world2;
+	public static BaseWorld caveWorld;
 
 	public GameState(Handler handler) {
 		super(handler);
 		Player player = new Player(handler, 100, 100);
 		world1 = new World1(handler, "res/Maps/map1.map", player);
+		caveWorld = new CaveWorld(handler, "res/Maps/caveMap.map", player);
 
 		world2 = new World2(handler, "res/Maps/map2.map", player);
-		handler.setWorld(world2);
+		handler.setWorld(world1);
 		handler.getWorld().getEntityManager().setPlayer(player);
 	}
 

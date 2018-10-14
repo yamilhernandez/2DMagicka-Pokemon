@@ -11,6 +11,7 @@ import Resources.Images;
 import java.awt.*;
 import java.util.Random;
 
+
 /**
  * Created by Elemental on 2/7/2017.
  */
@@ -182,7 +183,7 @@ public class TrainerEnemy extends CreatureBase {
 				getCurrentAnimationFrame(animDown, animUp, animLeft, animRight, Images.Trainer_front,
 						Images.Trainer_back, Images.Trainer_left, Images.Trainer_right),
 				(int) (x - handler.getGameCamera().getxOffset()), (int) (y - handler.getGameCamera().getyOffset()),
-				width, height, null);
+				width+20, height+20, null);
 		if (isBeinghurt() && healthcounter <= 120) {
 			g.setColor(Color.white);
 			g.drawString("TrainerHealth: " + getHealth(), (int) (x - handler.getGameCamera().getxOffset()),

@@ -145,7 +145,7 @@ public class Player extends CreatureBase {
 
 		if (handler.getKeyManager().keyJustPressed(KeyEvent.VK_TAB)) {
 
-			handler.setWorld(GameState.world1);
+			handler.setWorld(GameState.caveWorld);
 
 		}
 
