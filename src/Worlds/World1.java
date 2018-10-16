@@ -31,7 +31,8 @@ public class World1 extends BaseWorld {
 		super(handler, path, player);
 		this.handler = handler;
 		caveWorld = new CaveWorld(handler, "res/Maps/caveMap.map", player);
-		entityManager.addEntity(companion = new Companion(handler, 200, 200, EntityId.companion));
+
+		entityManager.addEntity(companion = new Companion(handler, 0, 0, EntityId.companion));
 		companion.setVisible(false);
 
 		rand = new Random();

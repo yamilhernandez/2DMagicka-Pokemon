@@ -143,7 +143,10 @@ public class Player extends CreatureBase {
 				if (i.getId() == EntityId.companion) {
 					if (!i.isVisible()) {
 						for (Item j : this.getInventory().getInventoryItems()) {
-							if (j.getCount() != 0) {
+							if (j.getId() == 6 && j.getCount() != 0) {
+								j.setCount(j.getCount() - 1);
+								i.setX(this.getX() + 32);
+								i.setY(this.getY() + 32);
 								i.setVisible(true);
 							}
 
