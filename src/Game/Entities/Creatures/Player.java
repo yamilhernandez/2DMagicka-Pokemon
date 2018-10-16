@@ -1,6 +1,7 @@
 package Game.Entities.Creatures;
 
 import Game.Entities.EntityBase;
+import Game.Entities.EntityId;
 import Game.GameStates.GameState;
 import Game.GameStates.State;
 import Game.Inventories.Inventory;
@@ -47,9 +48,9 @@ public class Player extends CreatureBase {
 
 	// spells
 
-	public Player(Handler handler, float x, float y) {
-		super(handler, x, y, CreatureBase.DEFAULT_CREATURE_WIDTH, CreatureBase.DEFAULT_CREATURE_HEIGHT);
-
+	public Player(Handler handler, float x, float y, EntityId id) {
+		super(handler, x, y, CreatureBase.DEFAULT_CREATURE_WIDTH, CreatureBase.DEFAULT_CREATURE_HEIGHT, id);
+		this.id = id;
 		bounds.x = 8 * 2;
 		bounds.y = 18 * 2;
 		bounds.width = 16 * 2;
@@ -134,14 +135,25 @@ public class Player extends CreatureBase {
 			}
 
 		}
-//		if (handler.getKeyManager().keyJustPressed(KeyEvent.VK_G)) {
-//			if (inventory.getInventoryItems().get(6).getCount() >= 1) {
-//				inventory.deleteItem(Item.items[5]); 
-//				handler.getWorld().getEntityManager().addEntity((new Companion(handler, super.getX()+20, super.getY()+20)));
-//			}
-			
-//		}
-			
+
+		if (handler.getKeyManager().keyJustPressed(KeyEvent.VK_G)) {
+
+			for (EntityBase i : handler.getWorld().getEntityManager().getEntities()) {
+
+				if (i.getId() == EntityId.companion) {
+					if (!i.isVisible()) {
+						for (Item j : this.getInventory().getInventoryItems()) {
+							if (j.getCount() != 0) {
+								i.setVisible(true);
+							}
+
+						}
+					}
+				}
+
+			}
+
+		}
 
 		if (handler.getKeyManager().keyJustPressed(KeyEvent.VK_TAB)) {
 
@@ -156,9 +168,9 @@ public class Player extends CreatureBase {
 				if (i != null) {
 					inventory.addItem(i);
 				}
-				//if(i.getCount() == 0) {
-					//inventory.getInventoryItems().add(i);
-				//}
+				// if(i.getCount() == 0) {
+				// inventory.getInventoryItems().add(i);
+				// }
 			}
 
 		}

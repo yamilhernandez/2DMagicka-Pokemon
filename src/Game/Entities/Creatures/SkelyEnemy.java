@@ -1,6 +1,7 @@
 package Game.Entities.Creatures;
 
 import Game.Entities.EntityBase;
+import Game.Entities.EntityId;
 import Game.Inventories.Inventory;
 import Game.Items.Item;
 import Main.Handler;
@@ -29,8 +30,9 @@ public class SkelyEnemy extends CreatureBase {
 	private int moveCount = 0;
 	private int direction;
 
-	public SkelyEnemy(Handler handler, float x, float y) {
-		super(handler, x, y, CreatureBase.DEFAULT_CREATURE_WIDTH, CreatureBase.DEFAULT_CREATURE_HEIGHT);
+	public SkelyEnemy(Handler handler, float x, float y, EntityId id) {
+		super(handler, x, y, CreatureBase.DEFAULT_CREATURE_WIDTH, CreatureBase.DEFAULT_CREATURE_HEIGHT, id);
+		this.id = id;
 		bounds.x = 8 * 2;
 		bounds.y = 18 * 2;
 		bounds.width = 16 * 2;

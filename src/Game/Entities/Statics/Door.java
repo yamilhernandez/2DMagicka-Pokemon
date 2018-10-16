@@ -1,5 +1,6 @@
 package Game.Entities.Statics;
 
+import Game.Entities.EntityId;
 import Game.Entities.Creatures.Player;
 import Game.GameStates.State;
 import Main.Handler;
@@ -19,8 +20,9 @@ public class Door extends StaticEntity {
 
 	private BaseWorld world;
 
-	public Door(Handler handler, float x, float y, BaseWorld world) {
-		super(handler, x, y, 64, 100);
+	public Door(Handler handler, float x, float y, BaseWorld world, EntityId id) {
+		super(handler, x, y, 64, 100, id);
+		this.id = id;
 		this.world = world;
 		health = 10000000;
 		bounds.x = 0;

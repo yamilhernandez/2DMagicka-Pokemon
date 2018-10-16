@@ -1,5 +1,6 @@
 package Game.Entities.Statics;
 
+import Game.Entities.EntityId;
 import Game.Items.Item;
 import Game.Tiles.Tile;
 import Resources.Images;
@@ -22,8 +23,9 @@ public class Chest extends StaticEntity {
 	private Clip audioClip;
 	private Random rand = new Random();
 
-	public Chest(Handler handler, float x, float y) {
-		super(handler, x, y, Tile.TILEHEIGHT * 2, Tile.TILEWIDTH);
+	public Chest(Handler handler, float x, float y, EntityId id) {
+		super(handler, x, y, Tile.TILEHEIGHT * 2, Tile.TILEWIDTH, id);
+		this.id = id;
 		bounds.x = -50;
 		bounds.y = -30;
 		bounds.width = 70;

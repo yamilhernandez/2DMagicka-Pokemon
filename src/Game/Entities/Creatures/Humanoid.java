@@ -6,6 +6,7 @@ import java.awt.Rectangle;
 
 import com.sun.glass.events.KeyEvent;
 
+import Game.Entities.EntityId;
 import Game.Entities.Statics.Door;
 import Game.Entities.Statics.StaticEntity;
 import Game.Items.Item;
@@ -23,8 +24,9 @@ public class Humanoid extends StaticEntity {
 
 	private Door door;
 
-	public Humanoid(Handler handler, float x, float y, BaseWorld world, Door door) {
-		super(handler, x, y, 64, 64);
+	public Humanoid(Handler handler, float x, float y, BaseWorld world, Door door, EntityId id) {
+		super(handler, x, y, 64, 64, id);
+		this.id = id;
 		this.door = door;
 		door.setVisible(false);
 

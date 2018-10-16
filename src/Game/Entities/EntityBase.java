@@ -22,13 +22,15 @@ public abstract class EntityBase {
 	protected boolean beinghurt = false;
 	protected int count = 0;
 	protected boolean visible = true;
+	protected EntityId id;
 
-	public EntityBase(Handler handler, float x, float y, int height, int width) {
+	public EntityBase(Handler handler, float x, float y, int height, int width, EntityId id) {
 		this.handler = handler;
 		this.x = x;
 		this.y = y;
 		this.width = width;
 		this.height = height;
+		this.id = id;
 		health = DEFAULT_HEALTH;
 
 		bounds = new Rectangle(0, 0, width, height);
@@ -140,6 +142,14 @@ public abstract class EntityBase {
 
 	public void setVisible(boolean visible) {
 		this.visible = visible;
+	}
+
+	public EntityId getId() {
+		return id;
+	}
+
+	public void setId(EntityId id) {
+		this.id = id;
 	}
 
 }

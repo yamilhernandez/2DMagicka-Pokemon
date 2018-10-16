@@ -1,5 +1,6 @@
 package Game.Entities.Statics;
 
+import Game.Entities.EntityId;
 import Game.Items.Item;
 import Game.Tiles.Tile;
 import Resources.Images;
@@ -24,8 +25,9 @@ public class Rock extends StaticEntity {
 	private Random randint;
 	private int RNGR;
 
-	public Rock(Handler handler, float x, float y) {
-		super(handler, x, y, Tile.TILEWIDTH, Tile.TILEHEIGHT);
+	public Rock(Handler handler, float x, float y, EntityId id) {
+		super(handler, x, y, Tile.TILEWIDTH, Tile.TILEHEIGHT, id);
+		this.id=id;
 
 		bounds.x = 0;
 		bounds.y = 0;

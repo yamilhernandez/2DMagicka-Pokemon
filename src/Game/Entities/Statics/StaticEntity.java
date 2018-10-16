@@ -1,6 +1,7 @@
 package Game.Entities.Statics;
 
 import Game.Entities.EntityBase;
+import Game.Entities.EntityId;
 import Main.Handler;
 
 /**
@@ -9,8 +10,8 @@ import Main.Handler;
 public abstract class StaticEntity extends EntityBase {
 
 
-    public StaticEntity(Handler handler, float x, float y, int height, int width) {
-        super(handler, x, y, height, width);
+    public StaticEntity(Handler handler, float x, float y, int height, int width,EntityId id) {
+        super(handler, x, y, height, width,id);
 
     }
 

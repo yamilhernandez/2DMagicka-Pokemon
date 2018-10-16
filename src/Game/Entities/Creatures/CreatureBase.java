@@ -4,6 +4,7 @@ import java.awt.Rectangle;
 import java.awt.image.BufferedImage;
 
 import Game.Entities.EntityBase;
+import Game.Entities.EntityId;
 import Game.Tiles.Tile;
 import Main.Handler;
 import Resources.Animation;
@@ -25,12 +26,14 @@ public abstract class CreatureBase extends EntityBase {
 	protected long lastAttackTimer, attackCooldown = 800, attackTimer = attackCooldown;
 
 	protected boolean ld = true, ll = false, lr = false, lu = false;
+	protected EntityId id;
 
-	public CreatureBase(Handler handler, float x, float y, int height, int width) {
-		super(handler, x, y, height, width);
+	public CreatureBase(Handler handler, float x, float y, int height, int width, EntityId id) {
+		super(handler, x, y, height, width, id);
 		speed = DEFAULT_SPEED;
 		xMove = 0;
 		yMove = 0;
+		this.id = id;
 	}
 
 	public BufferedImage getCurrentAnimationFrame(Animation animDown, Animation animUp, Animation animLeft,

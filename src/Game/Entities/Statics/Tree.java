@@ -1,5 +1,6 @@
 package Game.Entities.Statics;
 
+import Game.Entities.EntityId;
 import Game.Items.Item;
 import Game.Tiles.Tile;
 import Resources.Images;
@@ -20,8 +21,8 @@ public class Tree extends StaticEntity {
 	private DataLine.Info info;
 	private Clip audioClip;
 
-	public Tree(Handler handler, float x, float y) {
-		super(handler, x, y, Tile.TILEHEIGHT * 2, Tile.TILEWIDTH);
+	public Tree(Handler handler, float x, float y,EntityId id) {
+		super(handler, x, y, Tile.TILEHEIGHT * 2, Tile.TILEWIDTH, id);
 		bounds.x = 14;
 		bounds.y = 85;
 		bounds.width = 36;

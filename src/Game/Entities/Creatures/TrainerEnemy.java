@@ -2,6 +2,7 @@
 package Game.Entities.Creatures;
 
 import Game.Entities.EntityBase;
+import Game.Entities.EntityId;
 import Game.Inventories.Inventory;
 import Game.Items.Item;
 import Main.Handler;
@@ -10,7 +11,6 @@ import Resources.Images;
 
 import java.awt.*;
 import java.util.Random;
-
 
 /**
  * Created by Elemental on 2/7/2017.
@@ -31,8 +31,9 @@ public class TrainerEnemy extends CreatureBase {
 	private int moveCount = 0;
 	private int direction;
 
-	public TrainerEnemy(Handler handler, float x, float y) {
-		super(handler, x, y, CreatureBase.DEFAULT_CREATURE_WIDTH, CreatureBase.DEFAULT_CREATURE_HEIGHT);
+	public TrainerEnemy(Handler handler, float x, float y, EntityId id) {
+		super(handler, x, y, CreatureBase.DEFAULT_CREATURE_WIDTH, CreatureBase.DEFAULT_CREATURE_HEIGHT, id);
+		this.id = id;
 		bounds.x = 8 * 2;
 		bounds.y = 18 * 2;
 		bounds.width = 16 * 2;
@@ -183,7 +184,7 @@ public class TrainerEnemy extends CreatureBase {
 				getCurrentAnimationFrame(animDown, animUp, animLeft, animRight, Images.Trainer_front,
 						Images.Trainer_back, Images.Trainer_left, Images.Trainer_right),
 				(int) (x - handler.getGameCamera().getxOffset()), (int) (y - handler.getGameCamera().getyOffset()),
-				width+20, height+20, null);
+				width + 20, height + 20, null);
 		if (isBeinghurt() && healthcounter <= 120) {
 			g.setColor(Color.white);
 			g.drawString("TrainerHealth: " + getHealth(), (int) (x - handler.getGameCamera().getxOffset()),

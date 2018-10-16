@@ -1,5 +1,7 @@
 package Game.GameStates;
 
+import Game.Entities.EntityId;
+import Game.Entities.Creatures.Companion;
 import Game.Entities.Creatures.Player;
 import Main.Handler;
 import Worlds.BaseWorld;
@@ -20,13 +22,16 @@ public class GameState extends State {
 
 	public GameState(Handler handler) {
 		super(handler);
-		Player player = new Player(handler, 100, 100);
-		world1 = new World1(handler, "res/Maps/map1.map", player);
-		caveWorld = new CaveWorld(handler, "res/Maps/caveMap.map", player);
+		Player player = new Player(handler, 100, 100, EntityId.player);
 
-		world2 = new World2(handler, "res/Maps/map2.map", player);
-		handler.setWorld(world1);
-		handler.getWorld().getEntityManager().setPlayer(player);
+		world1 = new World1(this.handler, "res/Maps/map1.map", player);
+		caveWorld = new CaveWorld(this.handler, "res/Maps/caveMap.map", player);
+
+		world2 = new World2(this.handler, "res/Maps/map2.map", player);
+		this.handler.setWorld(world1);
+		this.handler.getWorld().getEntityManager().setPlayer(player);
+		
+
 	}
 
 	@Override
