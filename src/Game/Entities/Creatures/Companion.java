@@ -34,7 +34,7 @@ public class Companion extends CreatureBase {
 		bounds.y = 18 * 2;
 		bounds.width = 16 * 2;
 		bounds.height = 14 * 2;
-		speed = 2.5f;
+		speed = 3;
 		health = 50;
 		CompanionCam = new Rectangle();
 		randint = new Random();
@@ -103,15 +103,15 @@ public class Companion extends CreatureBase {
 					handler.getWorld().getEntityManager().getPlayer().getX() - handler.getGameCamera().getxOffset(),
 					handler.getWorld().getEntityManager().getPlayer().getY() - handler.getGameCamera().getyOffset())
 					|| CompanionCam.contains(
-							handler.getWorld().getEntityManager().getPlayer().getX()
+							handler.getWorld().getEntityManager().getPlayer().getX()  + 2
 									- handler.getGameCamera().getxOffset()
 									+ handler.getWorld().getEntityManager().getPlayer().getWidth(),
-							handler.getWorld().getEntityManager().getPlayer().getY()
+							handler.getWorld().getEntityManager().getPlayer().getY() + 2
 									- handler.getGameCamera().getyOffset()
 									+ handler.getWorld().getEntityManager().getPlayer().getHeight())) {
 				Rectangle cb = getCollisionBounds(0, 0);
 				Rectangle ar = new Rectangle();
-				int arSize = 13;
+				int arSize = 40;
 				ar.width = arSize;
 				ar.height = arSize;
 				if (lu) {
@@ -134,7 +134,7 @@ public class Companion extends CreatureBase {
 						continue;
 					if (e.getCollisionBounds(0, 0).intersects(ar)
 							&& e.equals(handler.getWorld().getEntityManager().getPlayer())) {
-						// checkAttacks();
+						
 						return;
 					}
 				}
