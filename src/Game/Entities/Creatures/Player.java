@@ -169,7 +169,10 @@ public class Player extends CreatureBase {
 			for (Item i : Item.items) {
 
 				if (i != null) {
+					if (i.getCount()==0) { i.setCount(1);}
 					inventory.addItem(i);
+					
+					
 				}
 				// if(i.getCount() == 0) {
 				// inventory.getInventoryItems().add(i);
