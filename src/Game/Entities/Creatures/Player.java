@@ -143,8 +143,10 @@ public class Player extends CreatureBase {
 				if (i.getId() == EntityId.companion) {
 					if (!i.isVisible()) {
 						for (Item j : this.getInventory().getInventoryItems()) {
-							if (j.getId() == 6 && j.getCount() != 0) {
-								j.setCount(j.getCount() - 1);
+							if (j.getId() == 6) {
+
+								this.useItem(j);
+
 								i.setX(this.getX() + 32);
 								i.setY(this.getY() + 32);
 								i.setVisible(true);
@@ -169,14 +171,13 @@ public class Player extends CreatureBase {
 			for (Item i : Item.items) {
 
 				if (i != null) {
-					if (i.getCount()==0) { i.setCount(1);}
+					if (i.getCount() == 0) {
+						i.setCount(1);
+					}
 					inventory.addItem(i);
-					
-					
+
 				}
-				// if(i.getCount() == 0) {
-				// inventory.getInventoryItems().add(i);
-				// }
+
 			}
 
 		}
@@ -223,6 +224,19 @@ public class Player extends CreatureBase {
 		g.setColor(Color.white);
 		g.drawString("Health: " + getHealth(), (int) (x - handler.getGameCamera().getxOffset()),
 				(int) (y - handler.getGameCamera().getyOffset() - 10));
+
+	}
+
+	public void useItem(Item c) {
+		if (c.getCount() > 1) {
+			c.setCount(c.getCount() - 1);
+
+		} else {
+
+			c.setCount(1);
+			this.getInventory().deleteItem(c);
+
+		}
 
 	}
 
