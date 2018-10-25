@@ -25,12 +25,10 @@ public class GameState extends State {
 		Player player = new Player(handler, 100, 100, EntityId.player);
 
 		world1 = new World1(this.handler, "res/Maps/map1.map", player);
-		caveWorld = new CaveWorld(this.handler, "res/Maps/caveMap.map", player);
 
 		world2 = new World2(this.handler, "res/Maps/map2.map", player);
 		this.handler.setWorld(world1);
 		this.handler.getWorld().getEntityManager().setPlayer(player);
-		
 
 	}
 

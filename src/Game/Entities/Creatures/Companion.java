@@ -27,8 +27,8 @@ public class Companion extends CreatureBase {
 	private int direction;
 	private boolean enemyAttack;
 
-	public Companion(Handler handler, float x, float y, EntityId id) {
-		super(handler, x, y, CreatureBase.DEFAULT_CREATURE_WIDTH, CreatureBase.DEFAULT_CREATURE_HEIGHT, id);
+	public Companion(Handler handler, EntityId id) {
+		super(handler, 0, 0, CreatureBase.DEFAULT_CREATURE_WIDTH, CreatureBase.DEFAULT_CREATURE_HEIGHT, id);
 		this.id = id;
 		bounds.x = 8 * 2;
 		bounds.y = 18 * 2;
@@ -103,7 +103,7 @@ public class Companion extends CreatureBase {
 					handler.getWorld().getEntityManager().getPlayer().getX() - handler.getGameCamera().getxOffset(),
 					handler.getWorld().getEntityManager().getPlayer().getY() - handler.getGameCamera().getyOffset())
 					|| CompanionCam.contains(
-							handler.getWorld().getEntityManager().getPlayer().getX()  + 2
+							handler.getWorld().getEntityManager().getPlayer().getX() + 2
 									- handler.getGameCamera().getxOffset()
 									+ handler.getWorld().getEntityManager().getPlayer().getWidth(),
 							handler.getWorld().getEntityManager().getPlayer().getY() + 2
@@ -134,7 +134,7 @@ public class Companion extends CreatureBase {
 						continue;
 					if (e.getCollisionBounds(0, 0).intersects(ar)
 							&& e.equals(handler.getWorld().getEntityManager().getPlayer())) {
-						
+
 						return;
 					}
 				}

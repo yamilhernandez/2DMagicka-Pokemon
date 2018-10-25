@@ -20,7 +20,7 @@ import Main.Handler;
 public class World1 extends BaseWorld {
 
 	public static BaseWorld caveWorld;
-	private Handler handler;
+
 	private Random rand;
 	private Door door;
 	private Companion companion;
@@ -29,10 +29,10 @@ public class World1 extends BaseWorld {
 
 	public World1(Handler handler, String path, Player player) {
 		super(handler, path, player);
-		this.handler = handler;
+
 		caveWorld = new CaveWorld(handler, "res/Maps/caveMap.map", player);
 
-		entityManager.addEntity(companion = new Companion(handler, 0, 0, EntityId.companion));
+		entityManager.addEntity(companion = new Companion(handler, EntityId.companion));
 		companion.setVisible(false);
 
 		rand = new Random();
@@ -59,6 +59,7 @@ public class World1 extends BaseWorld {
 				rand.nextInt((this.getHeight() * 64 - 64) + 1) + 64, 1));
 		itemManager.addItem(Item.dmgPotion.createNew(rand.nextInt((this.getWidth() * 64 - 64) + 1) + 64,
 				rand.nextInt((this.getHeight() * 64 - 64) + 1) + 64, 1));
+
 	}
 
 }

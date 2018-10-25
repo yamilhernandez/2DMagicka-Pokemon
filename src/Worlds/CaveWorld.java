@@ -3,7 +3,6 @@ package Worlds;
 import Game.Entities.EntityId;
 import Game.Entities.Creatures.Player;
 import Game.Entities.Creatures.TrainerEnemy;
-import Game.Entities.Statics.Tree;
 import Main.Handler;
 
 /**
