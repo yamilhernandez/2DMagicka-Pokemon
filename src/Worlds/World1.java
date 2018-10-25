@@ -23,17 +23,13 @@ public class World1 extends BaseWorld {
 
 	private Random rand;
 	private Door door;
-	private Companion companion;
 
 	// private BaseWorld caveWorld;
 
-	public World1(Handler handler, String path, Player player) {
-		super(handler, path, player);
+	public World1(Handler handler, String path, Player player, Companion companion) {
+		super(handler, path, player, companion);
 
-		caveWorld = new CaveWorld(handler, "res/Maps/caveMap.map", player);
-
-		entityManager.addEntity(companion = new Companion(handler, EntityId.companion));
-		companion.setVisible(false);
+		caveWorld = new CaveWorld(handler, "res/Maps/caveMap.map", player, companion);
 
 		rand = new Random();
 

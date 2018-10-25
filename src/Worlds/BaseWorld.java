@@ -1,5 +1,6 @@
 package Worlds;
 
+import Game.Entities.Creatures.Companion;
 import Game.Entities.Creatures.Player;
 import Game.Entities.EntityManager;
 import Game.GameStates.State;
@@ -26,10 +27,10 @@ public class BaseWorld {
 	// Item
 	protected ItemManager itemManager;
 
-	public BaseWorld(Handler handler, String path, Player player) {
+	public BaseWorld(Handler handler, String path, Player player, Companion companion) {
 
 		this.handler = handler;
-		entityManager = new EntityManager(handler, player);
+		entityManager = new EntityManager(handler, player, companion);
 		itemManager = new ItemManager(handler);
 
 		loadWorld(path);

@@ -1,5 +1,6 @@
 package Game.Entities;
 
+import Game.Entities.Creatures.Companion;
 import Game.Entities.Creatures.Player;
 import Main.Handler;
 
@@ -15,6 +16,7 @@ public class EntityManager {
 
 	private Handler handler;
 	private Player player;
+	private Companion companion;
 	private ArrayList<EntityBase> entities;
 	private Comparator<EntityBase> renderSorter = new Comparator<EntityBase>() {
 		@Override
@@ -25,11 +27,13 @@ public class EntityManager {
 		}
 	};
 
-	public EntityManager(Handler handler, Player player) {
+	public EntityManager(Handler handler, Player player, Companion companion) {
 		this.handler = handler;
 		this.player = player;
+		this.companion = companion;
 		entities = new ArrayList<EntityBase>();
 		addEntity(player);
+		addEntity(companion);
 	}
 
 	public void tick() {
@@ -70,6 +74,14 @@ public class EntityManager {
 
 	public void setPlayer(Player player) {
 		this.player = player;
+	}
+
+	public void setCompanion(Companion companion) {
+		this.companion = companion;
+	}
+
+	public Companion getCompanion() {
+		return companion;
 	}
 
 	public ArrayList<EntityBase> getEntities() {

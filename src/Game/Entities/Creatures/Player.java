@@ -45,6 +45,7 @@ public class Player extends CreatureBase {
 	private int animFireSpeed = 250;
 	private int FireSpeed = 2;
 	private int FireMove = 0;
+
 	private int movexp, moveyp, movexn, moveyn, tempmoveyp, tempmovexn, tempmoveyn, tempmovexp, fy, fx;
 
 	// spells
@@ -128,31 +129,26 @@ public class Player extends CreatureBase {
 			health++;
 
 		}
-		if (handler.getKeyManager().keyJustPressed(KeyEvent.VK_Z)) {this.useItem(Item.dmgPotion);}
-			
-
-		
+		if (handler.getKeyManager().keyJustPressed(KeyEvent.VK_Z)) {
+			this.useItem(Item.dmgPotion);
+		}
 
 		if (handler.getKeyManager().keyJustPressed(KeyEvent.VK_G)) {
-			
-			for (EntityBase i : handler.getWorld().getEntityManager().getEntities()) {
+			Companion companion = handler.getWorld().getEntityManager().getCompanion();
 
-				if (i.getId() == EntityId.companion) {
-					if (!i.isVisible()) {
-						for (Item j : this.getInventory().getInventoryItems()) {
-							if (j.getId() == 6) {
+			if (!companion.isVisible()) {
+				for (Item i : this.getInventory().getInventoryItems()) {
 
-								this.useItem(j);
+					if (i.getId() == 6) {
+						this.useItem(i);
 
-								i.setX(this.getX() + 32);
-								i.setY(this.getY() + 32);
-								i.setVisible(true);
-							}
+						companion.setVisible(true);
+						companion.setX(x + 32);
+						companion.setY(y + 32);
 
-						}
 					}
-				}
 
+				}
 			}
 
 		}
