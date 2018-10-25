@@ -46,8 +46,13 @@ public abstract class EntityBase {
 		health -= amt;
 		beinghurt = true;
 		if (health <= 0) {
-			active = false;
-			die();
+
+			if (id !=EntityId.companion) {
+				active = false;
+				die();
+			} else {
+				die();
+			}
 		}
 	}
 

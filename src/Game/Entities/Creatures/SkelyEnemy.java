@@ -88,7 +88,7 @@ public class SkelyEnemy extends CreatureBase {
 	private void checkIfMove() {
 
 		for (EntityBase p : handler.getWorld().getEntityManager().getEntities()) {
-			if (p.getId() == EntityId.player) {
+			if (p.getId() == EntityId.player ||( p.getId() == EntityId.companion&&p.isVisible())) {
 				xMove = 0;
 				yMove = 0;
 

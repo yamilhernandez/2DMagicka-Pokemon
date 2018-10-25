@@ -281,5 +281,8 @@ public class Companion extends CreatureBase {
 	@Override
 	public void die() {
 
+		this.setVisible(false);
+		this.setHealth(40);
+
 	}
 }
