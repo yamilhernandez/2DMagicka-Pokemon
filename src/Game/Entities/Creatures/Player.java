@@ -76,6 +76,8 @@ public class Player extends CreatureBase {
 
 	@Override
 	public void tick() {
+		
+		System.out.println(this.movexn);
 
 		// Animations
 		animDown.tick();

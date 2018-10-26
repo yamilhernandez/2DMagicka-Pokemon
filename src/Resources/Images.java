@@ -14,9 +14,8 @@ public class Images {
 	private static final int Bwidth = 64, Bheight = 64;
 	private static final int Rwidth = 56, Rheight = 93;
 	private static final int Fwidth = 512, Fheight = 197;
-	private static final int Pwidth= 33, Pheight =37;
-	private static final int Twidth= 50, Theight =59;
-	
+	private static final int Pwidth = 33, Pheight = 37;
+	private static final int Twidth = 50, Theight = 59;
 
 	public static BufferedImage[] blocks;
 	public static BufferedImage[] player_right;
@@ -69,6 +68,8 @@ public class Images {
 	public static BufferedImage dmgPotion;
 	public static BufferedImage[] bubble;
 	public static BufferedImage[] bubble2;
+	public static BufferedImage poketile;
+	public static BufferedImage steeltile;
 
 	public Images() {
 
@@ -84,7 +85,7 @@ public class Images {
 		SpriteSheet Bubble_sheet2 = new SpriteSheet(Images.loadImage("/Sheets/bubble2.png"));
 		SpriteSheet pikaSheet = new SpriteSheet(Images.loadImage("/Sheets/pikaSpritefix.png"));
 		SpriteSheet trainerSheet = new SpriteSheet(Images.loadImage("/Sheets/trainerSprite.png"));
-		
+
 		blocks = new BufferedImage[15];
 
 		player_left = new BufferedImage[4];
@@ -126,7 +127,8 @@ public class Images {
 		FireBallDown = new BufferedImage[6];
 
 		try {
-
+			steeltile = ImageIO.read(getClass().getResourceAsStream("/Blocks/steeltile.png"));
+			poketile = ImageIO.read(getClass().getResourceAsStream("/Blocks/poketile.png"));
 			key = ImageIO.read(getClass().getResourceAsStream("/Sheets/key.png"));
 			dmgPotion = ImageIO.read(getClass().getResourceAsStream("/Sheets/damagePotion.png"));
 			exlcamationMark = ImageIO.read(getClass().getResourceAsStream("/Sheets/excla.png"));
@@ -287,10 +289,10 @@ public class Images {
 			humanoid_left[0] = humanoidSheet.crop(16, 64, 32, 60);
 			humanoid_right[0] = humanoidSheet.crop(16, 128, 32, 60);
 			humanoid_back[0] = humanoidSheet.crop(16, 192, 32, 60);
-			
+
 			Pika_front[0] = pikaSheet.crop(58, 11, Pwidth, Pheight);
-			Pika_front[1] = pikaSheet.crop(117, 11,Pwidth , Pheight);
-			Pika_front[2] = pikaSheet.crop(176, 12 , Pwidth, Pheight);
+			Pika_front[1] = pikaSheet.crop(117, 11, Pwidth, Pheight);
+			Pika_front[2] = pikaSheet.crop(176, 12, Pwidth, Pheight);
 			Pika_front[3] = pikaSheet.crop(236, 12, 33, 37);
 
 			Pika_left[0] = pikaSheet.crop(59, 70, Pwidth, Pheight);
@@ -307,13 +309,13 @@ public class Images {
 			Pika_back[1] = pikaSheet.crop(118, 192, Pwidth, Pheight);
 			Pika_back[2] = pikaSheet.crop(177, 192, Pwidth, Pheight);
 			Pika_back[3] = pikaSheet.crop(238, 193, Pwidth, Pheight);
-			
+
 			Trainer_front[0] = trainerSheet.crop(7, 6, Twidth, Theight);
-			Trainer_front[1] = trainerSheet.crop(70, 6,Twidth , Theight);
-			Trainer_front[2] = trainerSheet.crop(133, 6 , Twidth, Theight);
+			Trainer_front[1] = trainerSheet.crop(70, 6, Twidth, Theight);
+			Trainer_front[2] = trainerSheet.crop(133, 6, Twidth, Theight);
 			Trainer_front[3] = trainerSheet.crop(198, 6, Twidth, Theight);
 
-			Trainer_left[0] = trainerSheet.crop(7, 71,Twidth, Theight);
+			Trainer_left[0] = trainerSheet.crop(7, 71, Twidth, Theight);
 			Trainer_left[1] = trainerSheet.crop(70, 71, Twidth, Theight);
 			Trainer_left[2] = trainerSheet.crop(133, 71, Twidth, Theight);
 			Trainer_left[3] = trainerSheet.crop(198, 71, Twidth, Theight);

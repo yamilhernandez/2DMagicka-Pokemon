@@ -29,7 +29,7 @@ public class GameState extends State {
 		world1 = new World1(this.handler, "res/Maps/map1.map", player, companion);
 
 		world2 = new World2(this.handler, "res/Maps/map2.map", player, companion);
-		this.handler.setWorld(world1);
+		this.handler.setWorld(world2);
 		this.handler.getWorld().getEntityManager().setPlayer(player);
 		this.handler.getWorld().getEntityManager().setCompanion(companion);
 
