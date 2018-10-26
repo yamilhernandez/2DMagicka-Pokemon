@@ -30,6 +30,7 @@ public class TrainerEnemy extends CreatureBase {
 	private Random randint;
 	private int moveCount = 0;
 	private int direction;
+	
 
 	public TrainerEnemy(Handler handler, float x, float y, EntityId id) {
 		super(handler, x, y, CreatureBase.DEFAULT_CREATURE_WIDTH, CreatureBase.DEFAULT_CREATURE_HEIGHT, id);

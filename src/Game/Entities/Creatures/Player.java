@@ -60,10 +60,10 @@ public class Player extends CreatureBase {
 		health = 100;
 		attack = 2;
 
-		animDown = new Animation(animWalkingSpeed, Images.player_front);
-		animLeft = new Animation(animWalkingSpeed, Images.player_left);
-		animRight = new Animation(animWalkingSpeed, Images.player_right);
-		animUp = new Animation(animWalkingSpeed, Images.player_back);
+		animDown = new Animation(animWalkingSpeed, Images.ash_front);
+		animLeft = new Animation(animWalkingSpeed, Images.ash_left);
+		animRight = new Animation(animWalkingSpeed, Images.ash_right);
+		animUp = new Animation(animWalkingSpeed, Images.ash_back);
 		animFireATT = new Animation(animFireSpeed, Images.FireBallLeft);
 		animFireATTR = new Animation(animFireSpeed, Images.FireBallRight);
 		animFireATTU = new Animation(animFireSpeed, Images.FireBallUp);
@@ -187,8 +187,8 @@ public class Player extends CreatureBase {
 	@Override
 	public void render(Graphics g) {
 		g.drawImage(
-				getCurrentAnimationFrame(animDown, animUp, animLeft, animRight, Images.player_front, Images.player_back,
-						Images.player_left, Images.player_right),
+				getCurrentAnimationFrame(animDown, animUp, animLeft, animRight, Images.ash_front, Images.ash_back,
+						Images.ash_left, Images.ash_right),
 				(int) (x - handler.getGameCamera().getxOffset()), (int) (y - handler.getGameCamera().getyOffset()),
 				width, height, null);
 
