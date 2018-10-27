@@ -4,6 +4,7 @@ import Game.GameStates.GameState;
 import Game.GameStates.MenuState;
 import Game.GameStates.PauseState;
 import Game.GameStates.WinState;
+import Game.GameStates.GameOverState;
 import Game.GameStates.State;
 import Inputs.KeyManager;
 import Inputs.MouseManager;
@@ -39,6 +40,7 @@ public class Game implements Runnable {
     public State menuState;
     public State pauseState;
     public State WinState;
+    public State GameOverState;
 
 
     //Input
@@ -93,6 +95,7 @@ public class Game implements Runnable {
         menuState = new MenuState(handler);
         pauseState = new PauseState(handler);
         WinState = new WinState(handler);
+        GameOverState = new GameOverState(handler);
 
         State.setState(menuState);
 

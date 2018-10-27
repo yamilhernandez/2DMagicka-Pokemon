@@ -89,6 +89,9 @@ public class Images {
 	public static BufferedImage[] bubble;
 	public static BufferedImage[] bubble2;
 	public static BufferedImage[] bubble3;
+	 public static BufferedImage[] butback;
+	 public static BufferedImage gameOver;
+	 
 
 	public static BufferedImage poketile;
 	public static BufferedImage steeltile;
@@ -113,6 +116,7 @@ public class Images {
 		SpriteSheet profSheet = new SpriteSheet(Images.loadImage("/Sheets/FRLG-Oak.png"));
 
 		blocks = new BufferedImage[15];
+		 butback= new BufferedImage[3];
 
 		player_left = new BufferedImage[4];
 		player_right = new BufferedImage[4];
@@ -195,7 +199,10 @@ public class Images {
 			pokeBall = ImageIO.read(getClass().getResourceAsStream("/Sheets/pokeball.png"));
 			butretry[0]= ImageIO.read(getClass().getResourceAsStream("/Buttons/retrybutton2.png"));//normbut
 	        butretry[1]= ImageIO.read(getClass().getResourceAsStream("/Buttons/retrybuttonhover2.png"));//hoverbut
-	        butretry[2]= ImageIO.read(getClass().getResourceAsStream("/Buttons/retrybuttonclick2.png"));//clickbut
+	        butback[0]= ImageIO.read(getClass().getResourceAsStream("/Buttons/backbutton.png"));//normbut
+            butback[1]= ImageIO.read(getClass().getResourceAsStream("/Buttons/backbuttonhover.png"));//hoverbut
+            butback[2]= ImageIO.read(getClass().getResourceAsStream("/Buttons/backbuttonclick.png"));//clickbut
+            gameOver= ImageIO.read(getClass().getResourceAsStream("/Sheets/gameOverback.png"));
 	        winState = ImageIO.read(getClass().getResourceAsStream("/Sheets/The-End-Thanks-for-playing-five-nights-at-freddys-38711419-900-600.jpg"));
 
 			// icon
