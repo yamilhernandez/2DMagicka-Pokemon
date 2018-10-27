@@ -45,8 +45,8 @@ public class World1 extends BaseWorld {
 		entityManager.addEntity(door = new Door(handler, 100, 0, caveWorld, EntityId.door));
 		entityManager.addEntity(new Humanoid(handler, 256, 256, caveWorld, door, EntityId.humanoid));
 		entityManager.addEntity(new SkelyEnemy(handler, 1250, 500, EntityId.enemy));
-		entityManager.addEntity(new Chest(handler, 235, 90, EntityId.chest));
-		entityManager.addEntity(new Chest(handler, 397, 239, EntityId.chest));
+		entityManager.addEntity(new Chest(handler, 600, 1000, EntityId.chest));
+		entityManager.addEntity(new Chest(handler, 300, 700, EntityId.chest));
 		entityManager.getPlayer().setX(spawnX);
 		entityManager.getPlayer().setY(spawnY);
 		itemManager.addItem(Item.goldCoin.createNew(300, 400, 1));
