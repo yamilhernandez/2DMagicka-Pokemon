@@ -186,11 +186,7 @@ public class SkelyEnemy extends CreatureBase {
 						Images.SkelyEnemy_back, Images.SkelyEnemy_left, Images.SkelyEnemy_right),
 				(int) (x - handler.getGameCamera().getxOffset()), (int) (y - handler.getGameCamera().getyOffset()),
 				width, height, null);
-		if (isBeinghurt() && healthcounter <= 120) {
-			g.setColor(Color.white);
-			g.drawString("SkelyHealth: " + getHealth(), (int) (x - handler.getGameCamera().getxOffset()),
-					(int) (y - handler.getGameCamera().getyOffset() - 20));
-		}
+
 	}
 
 	@Override

@@ -186,11 +186,7 @@ public class Boss extends CreatureBase {
 						Images.boss_left, Images.boss_right),
 				(int) (x - handler.getGameCamera().getxOffset()), (int) (y - handler.getGameCamera().getyOffset()),
 				width, height, null);
-		if (isBeinghurt() && healthcounter <= 120) {
-			g.setColor(Color.white);
-			g.drawString("Boss Health: " + getHealth(), (int) (x - handler.getGameCamera().getxOffset()),
-					(int) (y - handler.getGameCamera().getyOffset() - 20));
-		}
+
 	}
 
 	@Override

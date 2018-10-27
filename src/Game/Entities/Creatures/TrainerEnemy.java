@@ -189,11 +189,7 @@ public class TrainerEnemy extends CreatureBase {
 						Images.Trainer_back, Images.Trainer_left, Images.Trainer_right),
 				(int) (x - handler.getGameCamera().getxOffset()), (int) (y - handler.getGameCamera().getyOffset()),
 				width + 20, height + 20, null);
-		if (isBeinghurt() && healthcounter <= 120) {
-			g.setColor(Color.white);
-			g.drawString("TrainerHealth: " + getHealth(), (int) (x - handler.getGameCamera().getxOffset()),
-					(int) (y - handler.getGameCamera().getyOffset() - 20));
-		}
+
 	}
 
 	@Override
