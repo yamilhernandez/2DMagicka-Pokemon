@@ -18,7 +18,6 @@ public class GameState extends State {
 
 	public static BaseWorld world1;
 	public static BaseWorld world2;
-	public static BaseWorld caveWorld;
 
 	public GameState(Handler handler) {
 		super(handler);
@@ -29,9 +28,11 @@ public class GameState extends State {
 		world1 = new World1(this.handler, "res/Maps/map1.map", player, companion);
 
 		world2 = new World2(this.handler, "res/Maps/map2.map", player, companion);
-		this.handler.setWorld(world2);
+		this.handler.setWorld(world1);
 		this.handler.getWorld().getEntityManager().setPlayer(player);
 		this.handler.getWorld().getEntityManager().setCompanion(companion);
+		this.handler.addWorld(world1);
+		this.handler.addWorld(world2);
 
 	}
 

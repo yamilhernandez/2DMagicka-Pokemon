@@ -1,5 +1,13 @@
 package Game.Entities.Creatures;
 
+import java.awt.Color;
+import java.awt.Graphics;
+import java.awt.Graphics2D;
+import java.awt.Rectangle;
+import java.awt.event.KeyEvent;
+import java.awt.image.BufferedImage;
+import java.util.ArrayList;
+
 import Game.Entities.EntityBase;
 import Game.Entities.EntityId;
 import Game.GameStates.GameState;
@@ -7,13 +15,11 @@ import Game.GameStates.State;
 import Game.Inventories.Inventory;
 import Game.Items.Item;
 import Game.SpellCast.SpellCastUI;
+import Main.Handler;
 import Resources.Animation;
 import Resources.Images;
+import Worlds.BaseWorld;
 import Worlds.World1;
-import Main.Handler;
-import java.awt.*;
-import java.awt.event.KeyEvent;
-import java.awt.image.BufferedImage;
 
 /**
  * Created by Elemental on 1/1/2017.
@@ -46,6 +52,8 @@ public class Player extends CreatureBase {
 	private int FireSpeed = 2;
 	private int FireMove = 0;
 
+	private int wc = 0;
+
 	private int movexp, moveyp, movexn, moveyn, tempmoveyp, tempmovexn, tempmoveyn, tempmovexp, fy, fx;
 
 	// spells
@@ -76,8 +84,6 @@ public class Player extends CreatureBase {
 
 	@Override
 	public void tick() {
-		
-		System.out.println(this.movexn);
 
 		// Animations
 		animDown.tick();
@@ -156,8 +162,19 @@ public class Player extends CreatureBase {
 		}
 
 		if (handler.getKeyManager().keyJustPressed(KeyEvent.VK_TAB)) {
+			this.talking = false;
+			wc++;
+			if (wc > 2) {
+				wc = 0;
+			}
 
-			handler.setWorld(World1.caveWorld);
+			this.setX(100);
+			this.setY(100);
+			Companion companion = handler.getWorld().getEntityManager().getCompanion();
+			companion.setX(132);
+			companion.setY(132);
+			handler.setWorld(handler.getcWorld().get(wc));
+			;
 
 		}
 
@@ -186,6 +203,7 @@ public class Player extends CreatureBase {
 
 	@Override
 	public void render(Graphics g) {
+
 		g.drawImage(
 				getCurrentAnimationFrame(animDown, animUp, animLeft, animRight, Images.ash_front, Images.ash_back,
 						Images.ash_left, Images.ash_right),
@@ -419,6 +437,10 @@ public class Player extends CreatureBase {
 
 	}
 
+	public void caveWorldConvo() {
+
+	}
+
 	public Inventory getInventory() {
 		return inventory;
 	}
@@ -437,5 +459,10 @@ public class Player extends CreatureBase {
 
 	public void setTalking(Boolean talking) {
 		this.talking = talking;
+	}
+
+	public Rectangle getBoundsTop() {
+		return new Rectangle((int) (x - handler.getGameCamera().getxOffset()),
+				(int) (y - handler.getGameCamera().getyOffset() - 64), 64, 64);
 	}
 }

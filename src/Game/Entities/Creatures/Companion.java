@@ -17,13 +17,13 @@ import Resources.Images;
  */
 public class Companion extends CreatureBase {
 	private Animation animDown, animUp, animLeft, animRight;
-	private Boolean attacking = false;
+
 	private int animWalkingSpeed = 150;
 	private Inventory CompanionInventory;
 	private Rectangle CompanionCam;
 	private int healthcounter = 0;
 	private Random randint;
-	private int moveCount = 0;
+
 	private int direction;
 	private boolean enemyAttack;
 
@@ -76,7 +76,7 @@ public class Companion extends CreatureBase {
 		}
 		for (EntityBase i : handler.getWorld().getEntityManager().getEntities()) {
 
-			if (i.getId() == EntityId.enemy) {
+			if (i.getId() == EntityId.enemy || i.getId() == EntityId.trainer) {
 				if ((Math.abs(i.getX() - this.getX()) < 100) && i.isActive()) {
 
 					this.enemyAttack = true;
@@ -178,7 +178,7 @@ public class Companion extends CreatureBase {
 
 			for (EntityBase i : handler.getWorld().getEntityManager().getEntities()) {
 
-				if (i.getId() == EntityId.enemy) {
+				if (i.getId() == EntityId.enemy || i.getId() == EntityId.trainer) {
 					if (CompanionCam.contains(i.getX() - handler.getGameCamera().getxOffset(),
 							i.getY() - handler.getGameCamera().getyOffset())
 							|| CompanionCam.contains(i.getX() - handler.getGameCamera().getxOffset() + i.getWidth(),

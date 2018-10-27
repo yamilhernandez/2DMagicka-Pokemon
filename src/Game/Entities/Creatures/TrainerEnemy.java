@@ -12,6 +12,8 @@ import Resources.Images;
 import java.awt.*;
 import java.util.Random;
 
+import com.sun.glass.events.KeyEvent;
+
 /**
  * Created by Elemental on 2/7/2017.
  */
@@ -30,7 +32,6 @@ public class TrainerEnemy extends CreatureBase {
 	private Random randint;
 	private int moveCount = 0;
 	private int direction;
-	
 
 	public TrainerEnemy(Handler handler, float x, float y, EntityId id) {
 		super(handler, x, y, CreatureBase.DEFAULT_CREATURE_WIDTH, CreatureBase.DEFAULT_CREATURE_HEIGHT, id);
@@ -58,6 +59,7 @@ public class TrainerEnemy extends CreatureBase {
 
 	@Override
 	public void tick() {
+
 		animDown.tick();
 		animUp.tick();
 		animRight.tick();
@@ -84,103 +86,100 @@ public class TrainerEnemy extends CreatureBase {
 		}
 
 		Trainerinventory.tick();
-
 	}
 
 	private void checkIfMove() {
-		xMove = 0;
-		yMove = 0;
-
-		TrainerCam.x = (int) (x - handler.getGameCamera().getxOffset() - (64 * 3));
-		TrainerCam.y = (int) (y - handler.getGameCamera().getyOffset() - (64 * 3));
-		TrainerCam.width = 64 * 7;
-		TrainerCam.height = 64 * 7;
-
-		if (TrainerCam.contains(
-				handler.getWorld().getEntityManager().getPlayer().getX() - handler.getGameCamera().getxOffset(),
-				handler.getWorld().getEntityManager().getPlayer().getY() - handler.getGameCamera().getyOffset())
-				|| TrainerCam.contains(
-						handler.getWorld().getEntityManager().getPlayer().getX() - handler.getGameCamera().getxOffset()
-								+ handler.getWorld().getEntityManager().getPlayer().getWidth(),
-						handler.getWorld().getEntityManager().getPlayer().getY() - handler.getGameCamera().getyOffset()
-								+ handler.getWorld().getEntityManager().getPlayer().getHeight())) {
-
-			Rectangle cb = getCollisionBounds(0, 0);
-			Rectangle ar = new Rectangle();
-			int arSize = 13;
-			ar.width = arSize;
-			ar.height = arSize;
-
-			if (lu) {
-				ar.x = cb.x + cb.width / 2 - arSize / 2;
-				ar.y = cb.y - arSize;
-			} else if (ld) {
-				ar.x = cb.x + cb.width / 2 - arSize / 2;
-				ar.y = cb.y + cb.height;
-			} else if (ll) {
-				ar.x = cb.x - arSize;
-				ar.y = cb.y + cb.height / 2 - arSize / 2;
-			} else if (lr) {
-				ar.x = cb.x + cb.width;
-				ar.y = cb.y + cb.height / 2 - arSize / 2;
-			}
-
-			for (EntityBase e : handler.getWorld().getEntityManager().getEntities()) {
-				if (e.equals(this))
-					continue;
-				if (e.getCollisionBounds(0, 0).intersects(ar)
-						&& e.equals(handler.getWorld().getEntityManager().getPlayer())) {
-
-					checkAttacks();
-					return;
-				}
-			}
-
-			if (x >= handler.getWorld().getEntityManager().getPlayer().getX() - 8
-					&& x <= handler.getWorld().getEntityManager().getPlayer().getX() + 8) {// nada
-
+		for (EntityBase p : handler.getWorld().getEntityManager().getEntities()) {
+			if (p.getId() == EntityId.player || (p.getId() == EntityId.companion && p.isVisible())) {
 				xMove = 0;
-			} else if (x < handler.getWorld().getEntityManager().getPlayer().getX()) {// move right
-
-				xMove = speed;
-
-			} else if (x > handler.getWorld().getEntityManager().getPlayer().getX()) {// move left
-
-				xMove = -speed;
-			}
-
-			if (y >= handler.getWorld().getEntityManager().getPlayer().getY() - 8
-					&& y <= handler.getWorld().getEntityManager().getPlayer().getY() + 8) {// nada
 				yMove = 0;
-			} else if (y < handler.getWorld().getEntityManager().getPlayer().getY()) {// move down
-				yMove = speed;
 
-			} else if (y > handler.getWorld().getEntityManager().getPlayer().getY()) {// move up
-				yMove = -speed;
-			}
+				TrainerCam.x = (int) (x - handler.getGameCamera().getxOffset() - (64 * 3));
+				TrainerCam.y = (int) (y - handler.getGameCamera().getyOffset() - (64 * 3));
+				TrainerCam.width = 64 * 7;
+				TrainerCam.height = 64 * 7;
 
-		} else {
+				if (TrainerCam.contains(p.getX() - handler.getGameCamera().getxOffset(),
+						p.getY() - handler.getGameCamera().getyOffset())
+						|| TrainerCam.contains(p.getX() - handler.getGameCamera().getxOffset() + p.getWidth(),
+								p.getY() - handler.getGameCamera().getyOffset() + p.getHeight())) {
 
-			switch (direction) {
-			case 1:// up
-				yMove = -speed;
-				break;
-			case 2:// down
-				yMove = speed;
-				break;
-			case 3:// left
-				xMove = -speed;
-				break;
-			case 4:// right
-				xMove = speed;
-				break;
+					Rectangle cb = getCollisionBounds(0, 0);
+					Rectangle ar = new Rectangle();
+					int arSize = 13;
+					ar.width = arSize;
+					ar.height = arSize;
 
+					if (lu) {
+						ar.x = cb.x + cb.width / 2 - arSize / 2;
+						ar.y = cb.y - arSize;
+					} else if (ld) {
+						ar.x = cb.x + cb.width / 2 - arSize / 2;
+						ar.y = cb.y + cb.height;
+					} else if (ll) {
+						ar.x = cb.x - arSize;
+						ar.y = cb.y + cb.height / 2 - arSize / 2;
+					} else if (lr) {
+						ar.x = cb.x + cb.width;
+						ar.y = cb.y + cb.height / 2 - arSize / 2;
+					}
+
+					for (EntityBase e : handler.getWorld().getEntityManager().getEntities()) {
+						if (e.equals(this))
+							continue;
+						if (e.getCollisionBounds(0, 0).intersects(ar) && e.equals(p)) {
+
+							checkAttacks();
+							return;
+						}
+					}
+
+					if (x >= p.getX() - 8 && x <= p.getX() + 8) {// nada
+
+						xMove = 0;
+					} else if (x < p.getX()) {// move right
+
+						xMove = speed;
+
+					} else if (x > p.getX()) {// move left
+
+						xMove = -speed;
+					}
+
+					if (y >= p.getY() - 8 && y <= p.getY() + 8) {// nada
+						yMove = 0;
+					} else if (y < p.getY()) {// move down
+						yMove = speed;
+
+					} else if (y > p.getY()) {// move up
+						yMove = -speed;
+					}
+
+				} else {
+
+					switch (direction) {
+					case 1:// up
+						yMove = -speed;
+						break;
+					case 2:// down
+						yMove = speed;
+						break;
+					case 3:// left
+						xMove = -speed;
+						break;
+					case 4:// right
+						xMove = speed;
+						break;
+
+					}
+				}
 			}
 		}
 	}
 
 	@Override
 	public void render(Graphics g) {
+
 		g.drawImage(
 				getCurrentAnimationFrame(animDown, animUp, animLeft, animRight, Images.Trainer_front,
 						Images.Trainer_back, Images.Trainer_left, Images.Trainer_right),
@@ -195,8 +194,16 @@ public class TrainerEnemy extends CreatureBase {
 
 	@Override
 	public void die() {
-		handler.getWorld().getItemManager().addItem(Item.pokeBall.createNew((int) x + bounds.x, (int) y + bounds.y, 1));
-		this.setActive(false);
+		for (EntityBase b : handler.getWorld().getEntityManager().getEntities()) {
+
+			if (b.getId() == EntityId.humanoid) {
+				b.setVisible(true);
+				b.setY(handler.getWorld().getEntityManager().getPlayer().getY());
+				b.setX(handler.getWorld().getEntityManager().getPlayer().getX() - 70);
+
+			}
+
+		}
 
 	}
 }

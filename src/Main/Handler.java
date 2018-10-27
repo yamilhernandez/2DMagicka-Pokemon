@@ -1,5 +1,7 @@
 package Main;
 
+import java.util.ArrayList;
+
 import Inputs.KeyManager;
 import Resources.GameCamera;
 import Inputs.MouseManager;
@@ -12,13 +14,23 @@ public class Handler {
 
 	private Game game;
 	private BaseWorld world;
+	private ArrayList<BaseWorld> cWorld = new ArrayList<BaseWorld>();
 
 	public Handler(Game game) {
 		this.game = game;
 	}
 
+	public void addWorld(BaseWorld i) {
+		cWorld.add(i);
+
+	}
+
 	public GameCamera getGameCamera() {
 		return game.getGameCamera();
+	}
+
+	public ArrayList<BaseWorld> getcWorld() {
+		return cWorld;
 	}
 
 	public KeyManager getKeyManager() {

@@ -16,7 +16,7 @@ public class Tile {
 	public static Tile[] tiles = new Tile[256];
 	public static Tile grassTile = new GrassTile(1);
 	public static Tile graarockTile = new RockTile(Images.blocks[3], 3);
-	public static Tile dirtrockTile = new RockTile(Images.blocks[12], 12);
+	public static Tile dirtrockTile = new RockTile(Images.blocks[12], 14);
 	public static Tile dirtTile = new DirtTile(2);
 	public static Tile upperleftTile = new BorderTile(Images.blocks[4], 4);
 	public static Tile upperrightTile = new BorderTile(Images.blocks[5], 5);

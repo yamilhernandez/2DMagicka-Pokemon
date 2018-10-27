@@ -88,7 +88,7 @@ public class Boss extends CreatureBase {
 	private void checkIfMove() {
 
 		for (EntityBase p : handler.getWorld().getEntityManager().getEntities()) {
-			if (p.getId() == EntityId.player ||( p.getId() == EntityId.companion&&p.isVisible())) {
+			if (p.getId() == EntityId.player || (p.getId() == EntityId.companion)) {
 				xMove = 0;
 				yMove = 0;
 
@@ -178,8 +178,8 @@ public class Boss extends CreatureBase {
 	@Override
 	public void render(Graphics g) {
 		g.drawImage(
-				getCurrentAnimationFrame(animDown, animUp, animLeft, animRight, Images.boss_front,
-						Images.boss_back, Images.boss_left, Images.boss_right),
+				getCurrentAnimationFrame(animDown, animUp, animLeft, animRight, Images.boss_front, Images.boss_back,
+						Images.boss_left, Images.boss_right),
 				(int) (x - handler.getGameCamera().getxOffset()), (int) (y - handler.getGameCamera().getyOffset()),
 				width, height, null);
 		if (isBeinghurt() && healthcounter <= 120) {

@@ -16,7 +16,7 @@ public class Images {
 	private static final int Fwidth = 512, Fheight = 197;
 	private static final int Pwidth = 33, Pheight = 37;
 	private static final int Twidth = 50, Theight = 59;
-	private static final int Awidth= 16, Aheight =19;
+	private static final int Awidth = 16, Aheight = 19;
 
 	public static BufferedImage[] blocks;
 	public static BufferedImage[] player_right;
@@ -39,7 +39,7 @@ public class Images {
 	public static BufferedImage[] Trainer_left;
 	public static BufferedImage[] Trainer_front;
 	public static BufferedImage[] Trainer_back;
-	
+
 	public static BufferedImage[] boss_right;
 	public static BufferedImage[] boss_left;
 	public static BufferedImage[] boss_front;
@@ -49,7 +49,7 @@ public class Images {
 	public static BufferedImage[] ash_front;
 	public static BufferedImage[] ash_back;
 	public static BufferedImage[] butstart;
-	
+
 	public static BufferedImage[] particleSmoke;
 	public static BufferedImage[] items;
 	public static BufferedImage[] numbers;
@@ -79,6 +79,8 @@ public class Images {
 	public static BufferedImage dmgPotion;
 	public static BufferedImage[] bubble;
 	public static BufferedImage[] bubble2;
+	public static BufferedImage[] bubble3;
+
 	public static BufferedImage poketile;
 	public static BufferedImage steeltile;
 
@@ -94,11 +96,11 @@ public class Images {
 		SpriteSheet humanoidSheet = new SpriteSheet(Images.loadImage("/Sheets/humanoid.png"));
 		SpriteSheet Bubble_sheet = new SpriteSheet(Images.loadImage("/Sheets/bubble.png"));
 		SpriteSheet Bubble_sheet2 = new SpriteSheet(Images.loadImage("/Sheets/bubble2.png"));
+		SpriteSheet Bubble_sheet3 = new SpriteSheet(Images.loadImage("/Sheets/bubble3.png"));
 		SpriteSheet pikaSheet = new SpriteSheet(Images.loadImage("/Sheets/pikaSpritefix.png"));
 		SpriteSheet trainerSheet = new SpriteSheet(Images.loadImage("/Sheets/trainerSprite.png"));
 		SpriteSheet bossSheet = new SpriteSheet(Images.loadImage("/Sheets/BossSprite2.png"));
 		SpriteSheet ashSheet = new SpriteSheet(Images.loadImage("/Sheets/ash_sprite.png"));
-
 
 		blocks = new BufferedImage[15];
 
@@ -123,7 +125,7 @@ public class Images {
 		Trainer_back = new BufferedImage[4];
 		Trainer_left = new BufferedImage[4];
 		Trainer_right = new BufferedImage[4];
-		
+
 		boss_front = new BufferedImage[3];
 		boss_back = new BufferedImage[3];
 		boss_left = new BufferedImage[3];
@@ -132,7 +134,6 @@ public class Images {
 		ash_back = new BufferedImage[3];
 		ash_left = new BufferedImage[3];
 		ash_right = new BufferedImage[3];
-
 
 		butstart = new BufferedImage[3];
 		particleSmoke = new BufferedImage[3];
@@ -144,6 +145,7 @@ public class Images {
 		Runes = new BufferedImage[36];
 		bubble = new BufferedImage[4];
 		bubble2 = new BufferedImage[4];
+		bubble3 = new BufferedImage[2];
 
 		FireBallLeft = new BufferedImage[6];
 		FireBallRight = new BufferedImage[6];
@@ -353,46 +355,38 @@ public class Images {
 			Trainer_back[1] = trainerSheet.crop(70, 196, Twidth, Theight);
 			Trainer_back[2] = trainerSheet.crop(133, 196, Twidth, Theight);
 			Trainer_back[3] = trainerSheet.crop(198, 196, Twidth, Theight);
-			
+
 			ash_front[0] = ashSheet.crop(15, 146, Awidth, Aheight);
 			ash_front[1] = ashSheet.crop(32, 146, Awidth, Aheight);
 			ash_front[2] = ashSheet.crop(51, 146, Awidth, Aheight);
-			
 
 			ash_back[0] = ashSheet.crop(122, 146, Awidth, Aheight);
 			ash_back[1] = ashSheet.crop(139, 146, Awidth, Aheight);
 			ash_back[2] = ashSheet.crop(155, 146, Awidth, Aheight);
-			
 
 			ash_right[0] = ashSheet.crop(173, 146, Awidth, Aheight);
 			ash_right[1] = ashSheet.crop(191, 146, Awidth, Aheight);
 			ash_right[2] = ashSheet.crop(207, 146, Awidth, Aheight);
-			
 
 			ash_left[0] = ashSheet.crop(69, 146, Awidth, Aheight);
 			ash_left[1] = ashSheet.crop(89, 146, Awidth, Aheight);
 			ash_left[2] = ashSheet.crop(105, 146, Awidth, Aheight);
-			
-			
+
 			boss_front[0] = bossSheet.crop(250, 17, 41, 43);
 			boss_front[1] = bossSheet.crop(291, 19, 41, 43);
 			boss_front[2] = bossSheet.crop(332, 17, 41, 43);
-			
 
 			boss_back[0] = bossSheet.crop(253, 63, 39, 54);
 			boss_back[1] = bossSheet.crop(292, 62, 40, 55);
 			boss_back[2] = bossSheet.crop(333, 62, 40, 55);
-			
 
 			boss_right[0] = bossSheet.crop(534, 305, 57, 49);
 			boss_right[1] = bossSheet.crop(594, 306, 57, 49);
 			boss_right[2] = bossSheet.crop(660, 318, 57, 49);
-			
 
 			boss_left[0] = bossSheet.crop(226, 116, 57, 51);
 			boss_left[1] = bossSheet.crop(285, 116, 57, 49);
 			boss_left[2] = bossSheet.crop(342, 116, 57, 49);
-
 
 			bubble[0] = Bubble_sheet.crop(0, 0, 200, 150);
 			bubble[1] = Bubble_sheet.crop(200, 0, 200, 150);
@@ -402,6 +396,8 @@ public class Images {
 			bubble2[0] = Bubble_sheet2.crop(0, 0, 200, 150);
 			bubble2[1] = Bubble_sheet2.crop(200, 0, 200, 150);
 			bubble2[2] = Bubble_sheet2.crop(400, 0, 200, 150);
+			bubble3[0] = Bubble_sheet3.crop(0, 0, 200, 150);
+			bubble3[1] = Bubble_sheet3.crop(200, 0, 200, 150);
 
 		} catch (IOException e) {
 			e.printStackTrace();

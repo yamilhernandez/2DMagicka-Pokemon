@@ -30,7 +30,7 @@ public class World1 extends BaseWorld {
 		super(handler, path, player, companion);
 
 		caveWorld = new CaveWorld(handler, "res/Maps/caveMap.map", player, companion);
-
+		handler.addWorld(this.caveWorld);
 		rand = new Random();
 
 		entityManager.addEntity(new Tree(handler, 100, 250, EntityId.tree));
