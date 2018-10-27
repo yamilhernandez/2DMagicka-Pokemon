@@ -17,6 +17,7 @@ public class Images {
 	private static final int Pwidth = 33, Pheight = 37;
 	private static final int Twidth = 50, Theight = 59;
 	private static final int Awidth = 16, Aheight = 19;
+	private static final int Hwidth= 17, Hheight =20;
 
 	public static BufferedImage[] blocks;
 	public static BufferedImage[] player_right;
@@ -51,6 +52,11 @@ public class Images {
 	public static BufferedImage[] ash_front;
 	public static BufferedImage[] ash_back;
 	public static BufferedImage[] butstart;
+	
+	public static BufferedImage[] prof_right;
+	public static BufferedImage[] prof_left;
+	public static BufferedImage[] prof_front;
+	public static BufferedImage[] prof_back;
 
 	public static BufferedImage[] particleSmoke;
 	public static BufferedImage[] items;
@@ -104,6 +110,7 @@ public class Images {
 		SpriteSheet trainerSheet = new SpriteSheet(Images.loadImage("/Sheets/trainerSprite.png"));
 		SpriteSheet bossSheet = new SpriteSheet(Images.loadImage("/Sheets/BossSprite2.png"));
 		SpriteSheet ashSheet = new SpriteSheet(Images.loadImage("/Sheets/ash_sprite.png"));
+		SpriteSheet profSheet = new SpriteSheet(Images.loadImage("/Sheets/FRLG-Oak.png"));
 
 		blocks = new BufferedImage[15];
 
@@ -111,6 +118,11 @@ public class Images {
 		player_right = new BufferedImage[4];
 		player_front = new BufferedImage[4];
 		player_back = new BufferedImage[4];
+		
+		prof_front = new BufferedImage[3];
+		prof_back = new BufferedImage[3];
+		prof_left = new BufferedImage[3];
+		prof_right = new BufferedImage[3];
 		
 
 		SkelyEnemy_left = new BufferedImage[4];
@@ -396,6 +408,28 @@ public class Images {
 			boss_left[0] = bossSheet.crop(226, 116, 57, 51);
 			boss_left[1] = bossSheet.crop(285, 116, 57, 49);
 			boss_left[2] = bossSheet.crop(342, 116, 57, 49);
+			
+			
+			
+			prof_front[0] = profSheet.crop(210, 3, Hwidth, Hheight);
+			prof_front[1] = profSheet.crop(226, 3, Hwidth, Hheight);
+			prof_front[2] = profSheet.crop(243, 3, Hwidth, Hheight);
+			
+
+			prof_back[0] = profSheet.crop(210, 69, Hwidth, Hheight);
+			prof_back[1] = profSheet.crop(226, 69 ,Hwidth, Hheight);
+			prof_back[2] = profSheet.crop(242, 69, Hwidth, Hheight);
+			
+
+			prof_right[0] = profSheet.crop(209, 26, Hwidth, Hheight);
+			prof_right[1] = profSheet.crop(224, 25, Hwidth, Hheight);
+			prof_right[2] = profSheet.crop(240, 26, Hwidth, Hheight);
+			
+
+			prof_left[0] = profSheet.crop(209, 48, Hwidth, Hheight);
+			prof_left[1] = profSheet.crop(224, 47, Hwidth, Hheight);
+			prof_left[2] = profSheet.crop(240, 47, Hwidth, Hheight);
+
 
 			bubble[0] = Bubble_sheet.crop(0, 0, 200, 150);
 			bubble[1] = Bubble_sheet.crop(200, 0, 200, 150);

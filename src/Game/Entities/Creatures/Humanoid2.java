@@ -45,7 +45,7 @@ public class Humanoid2 extends StaticEntity {
 			int imageX = (int) (x - handler.getGameCamera().getxOffset());
 			int imageY = (int) (y - handler.getGameCamera().getyOffset());
 
-			g.drawImage(Images.humanoid_right[0], imageX, imageY - 20, 64, 84, null);
+			g.drawImage(Images.prof_right[0], imageX, imageY - 20, 64, 84, null);
 
 			selected = true;
 
