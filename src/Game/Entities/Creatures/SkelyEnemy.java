@@ -1,5 +1,6 @@
 package Game.Entities.Creatures;
 
+import Game.Entities.DisplayInfo;
 import Game.Entities.EntityBase;
 import Game.Entities.EntityId;
 import Game.Inventories.Inventory;
@@ -29,6 +30,7 @@ public class SkelyEnemy extends CreatureBase {
 	private Random randint;
 	private int moveCount = 0;
 	private int direction;
+	private DisplayInfo di;
 
 	public SkelyEnemy(Handler handler, float x, float y, EntityId id) {
 		super(handler, x, y, CreatureBase.DEFAULT_CREATURE_WIDTH, CreatureBase.DEFAULT_CREATURE_HEIGHT, id);
@@ -51,6 +53,7 @@ public class SkelyEnemy extends CreatureBase {
 		animUp = new Animation(animWalkingSpeed, Images.SkelyEnemy_back);
 
 		Skelyinventory = new Inventory(handler);
+		di = new DisplayInfo(this, handler);
 
 	}
 
@@ -88,7 +91,7 @@ public class SkelyEnemy extends CreatureBase {
 	private void checkIfMove() {
 
 		for (EntityBase p : handler.getWorld().getEntityManager().getEntities()) {
-			if (p.getId() == EntityId.player ||( p.getId() == EntityId.companion&&p.isVisible())) {
+			if (p.getId() == EntityId.player || (p.getId() == EntityId.companion && p.isVisible())) {
 				xMove = 0;
 				yMove = 0;
 
@@ -177,6 +180,7 @@ public class SkelyEnemy extends CreatureBase {
 
 	@Override
 	public void render(Graphics g) {
+		di.render(g, (int) x, (int) y);
 		g.drawImage(
 				getCurrentAnimationFrame(animDown, animUp, animLeft, animRight, Images.SkelyEnemy_front,
 						Images.SkelyEnemy_back, Images.SkelyEnemy_left, Images.SkelyEnemy_right),

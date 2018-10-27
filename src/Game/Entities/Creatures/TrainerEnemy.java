@@ -1,6 +1,7 @@
 
 package Game.Entities.Creatures;
 
+import Game.Entities.DisplayInfo;
 import Game.Entities.EntityBase;
 import Game.Entities.EntityId;
 import Game.Inventories.Inventory;
@@ -32,6 +33,7 @@ public class TrainerEnemy extends CreatureBase {
 	private Random randint;
 	private int moveCount = 0;
 	private int direction;
+	private DisplayInfo di;
 
 	public TrainerEnemy(Handler handler, float x, float y, EntityId id) {
 		super(handler, x, y, CreatureBase.DEFAULT_CREATURE_WIDTH, CreatureBase.DEFAULT_CREATURE_HEIGHT, id);
@@ -54,6 +56,7 @@ public class TrainerEnemy extends CreatureBase {
 		animUp = new Animation(animWalkingSpeed, Images.Trainer_back);
 
 		Trainerinventory = new Inventory(handler);
+		di = new DisplayInfo(this, handler);
 
 	}
 
@@ -179,6 +182,7 @@ public class TrainerEnemy extends CreatureBase {
 
 	@Override
 	public void render(Graphics g) {
+		di.render(g, (int) x, (int) y);
 
 		g.drawImage(
 				getCurrentAnimationFrame(animDown, animUp, animLeft, animRight, Images.Trainer_front,

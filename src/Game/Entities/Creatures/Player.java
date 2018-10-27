@@ -1,16 +1,13 @@
 package Game.Entities.Creatures;
 
-import java.awt.Color;
 import java.awt.Graphics;
-import java.awt.Graphics2D;
 import java.awt.Rectangle;
 import java.awt.event.KeyEvent;
 import java.awt.image.BufferedImage;
-import java.util.ArrayList;
 
+import Game.Entities.DisplayInfo;
 import Game.Entities.EntityBase;
 import Game.Entities.EntityId;
-import Game.GameStates.GameState;
 import Game.GameStates.State;
 import Game.Inventories.Inventory;
 import Game.Items.Item;
@@ -18,8 +15,6 @@ import Game.SpellCast.SpellCastUI;
 import Main.Handler;
 import Resources.Animation;
 import Resources.Images;
-import Worlds.BaseWorld;
-import Worlds.World1;
 
 /**
  * Created by Elemental on 1/1/2017.
@@ -51,6 +46,7 @@ public class Player extends CreatureBase {
 	private int animFireSpeed = 250;
 	private int FireSpeed = 2;
 	private int FireMove = 0;
+	private DisplayInfo di;
 
 	private int wc = 0;
 
@@ -79,6 +75,7 @@ public class Player extends CreatureBase {
 
 		inventory = new Inventory(handler);
 		spellGUI = new SpellCastUI(handler);
+		di = new DisplayInfo(this, handler);
 
 	}
 
@@ -189,7 +186,6 @@ public class Player extends CreatureBase {
 					inventory.addItem(i);
 
 				}
-
 			}
 
 		}
@@ -203,6 +199,7 @@ public class Player extends CreatureBase {
 
 	@Override
 	public void render(Graphics g) {
+		this.di.render(g, (int) this.x, (int) this.y);
 
 		g.drawImage(
 				getCurrentAnimationFrame(animDown, animUp, animLeft, animRight, Images.ash_front, Images.ash_back,
@@ -214,29 +211,6 @@ public class Player extends CreatureBase {
 			FireBallAttack(g);
 
 		}
-
-		g.setColor(Color.BLACK);
-		g.drawRect((int) (x - handler.getGameCamera().getxOffset() - 1),
-				(int) (y - handler.getGameCamera().getyOffset() - 21), 76, 11);
-		if (this.getHealth() > 50) {
-			g.setColor(Color.GREEN);
-			g.fillRect((int) (x - handler.getGameCamera().getxOffset()),
-					(int) (y - handler.getGameCamera().getyOffset() - 20), getHealth(), 10);
-
-		} else if (this.getHealth() >= 15 && getHealth() <= 50) {
-			g.setColor(Color.YELLOW);
-			g.fillRect((int) (x - handler.getGameCamera().getxOffset()),
-					(int) (y - handler.getGameCamera().getyOffset() - 20), getHealth(), 10);
-
-		} else if (this.getHealth() < 15) {
-			g.setColor(Color.RED);
-			g.fillRect((int) (x - handler.getGameCamera().getxOffset()),
-					(int) (y - handler.getGameCamera().getyOffset() - 20), getHealth(), 10);
-
-		}
-		g.setColor(Color.white);
-		g.drawString("Health: " + getHealth(), (int) (x - handler.getGameCamera().getxOffset()),
-				(int) (y - handler.getGameCamera().getyOffset() - 10));
 
 	}
 

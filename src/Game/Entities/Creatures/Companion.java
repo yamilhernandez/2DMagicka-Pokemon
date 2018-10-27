@@ -5,6 +5,7 @@ import java.awt.Graphics;
 import java.awt.Rectangle;
 import java.util.Random;
 
+import Game.Entities.DisplayInfo;
 import Game.Entities.EntityBase;
 import Game.Entities.EntityId;
 import Game.Inventories.Inventory;
@@ -23,6 +24,7 @@ public class Companion extends CreatureBase {
 	private Rectangle CompanionCam;
 	private int healthcounter = 0;
 	private Random randint;
+	private DisplayInfo di;
 
 	private int direction;
 	private boolean enemyAttack;
@@ -44,6 +46,7 @@ public class Companion extends CreatureBase {
 		animRight = new Animation(animWalkingSpeed, Images.Pika_right);
 		animUp = new Animation(animWalkingSpeed, Images.Pika_back);
 		CompanionInventory = new Inventory(handler);
+		di = new DisplayInfo(this, handler);
 
 	}
 
@@ -264,7 +267,9 @@ public class Companion extends CreatureBase {
 
 	@Override
 	public void render(Graphics g) {
+
 		if (visible) {
+			di.render(g, (int) x, (int) y);
 			g.drawImage(
 					getCurrentAnimationFrame(animDown, animUp, animLeft, animRight, Images.Pika_front, Images.Pika_back,
 							Images.Pika_left, Images.Pika_right),
