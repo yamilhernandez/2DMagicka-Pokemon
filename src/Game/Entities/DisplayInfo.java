@@ -40,4 +40,10 @@ public class DisplayInfo {
 				(int) (y - handler.getGameCamera().getyOffset() - 10));
 
 	}
+
+	public void missionLog() {
+		
+		
+
+	}
 }

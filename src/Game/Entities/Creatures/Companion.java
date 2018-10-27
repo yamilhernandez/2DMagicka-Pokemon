@@ -275,11 +275,7 @@ public class Companion extends CreatureBase {
 							Images.Pika_left, Images.Pika_right),
 					(int) (x - handler.getGameCamera().getxOffset()), (int) (y - handler.getGameCamera().getyOffset()),
 					width, height, null);
-			if (isBeinghurt() && healthcounter <= 120) {
-				g.setColor(Color.white);
-				g.drawString("Companion Health: " + getHealth(), (int) (x - handler.getGameCamera().getxOffset()),
-						(int) (y - handler.getGameCamera().getyOffset() - 20));
-			}
+
 		}
 	}
 

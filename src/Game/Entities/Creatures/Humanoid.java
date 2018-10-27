@@ -15,6 +15,7 @@ import Resources.Images;
 import Worlds.BaseWorld;
 
 public class Humanoid extends StaticEntity {
+	
 
 	private int counter = 0;
 	private boolean selected = false;
