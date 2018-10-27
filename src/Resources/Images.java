@@ -40,6 +40,8 @@ public class Images {
 	public static BufferedImage[] Trainer_front;
 	public static BufferedImage[] Trainer_back;
 
+	public static BufferedImage[] butretry;
+
 	public static BufferedImage[] boss_right;
 	public static BufferedImage[] boss_left;
 	public static BufferedImage[] boss_front;
@@ -61,6 +63,7 @@ public class Images {
 	public static BufferedImage E;
 	public static BufferedImage EP;
 	public static BufferedImage Pause;
+	public static BufferedImage winState;
 	public static BufferedImage[] Resume;
 	public static BufferedImage[] BTitle;
 	public static BufferedImage[] Options;
@@ -108,6 +111,7 @@ public class Images {
 		player_right = new BufferedImage[4];
 		player_front = new BufferedImage[4];
 		player_back = new BufferedImage[4];
+		
 
 		SkelyEnemy_left = new BufferedImage[4];
 		SkelyEnemy_right = new BufferedImage[4];
@@ -125,6 +129,7 @@ public class Images {
 		Trainer_back = new BufferedImage[4];
 		Trainer_left = new BufferedImage[4];
 		Trainer_right = new BufferedImage[4];
+		butretry= new BufferedImage[3];
 
 		boss_front = new BufferedImage[3];
 		boss_back = new BufferedImage[3];
@@ -176,6 +181,10 @@ public class Images {
 			Options[0] = ImageIO.read(getClass().getResourceAsStream("/Buttons/Options.png"));
 			Options[1] = ImageIO.read(getClass().getResourceAsStream("/Buttons/OptionsP.png"));
 			pokeBall = ImageIO.read(getClass().getResourceAsStream("/Sheets/pokeball.png"));
+			butretry[0]= ImageIO.read(getClass().getResourceAsStream("/Buttons/retrybutton2.png"));//normbut
+	        butretry[1]= ImageIO.read(getClass().getResourceAsStream("/Buttons/retrybuttonhover2.png"));//hoverbut
+	        butretry[2]= ImageIO.read(getClass().getResourceAsStream("/Buttons/retrybuttonclick2.png"));//clickbut
+	        winState = ImageIO.read(getClass().getResourceAsStream("/Sheets/The-End-Thanks-for-playing-five-nights-at-freddys-38711419-900-600.jpg"));
 
 			// icon
 			icon = new ImageIcon(runesheet.crop(Rwidth * 1, Rheight * 0, Rwidth, Rheight));

@@ -3,6 +3,7 @@ package Game.Entities.Creatures;
 import Game.Entities.DisplayInfo;
 import Game.Entities.EntityBase;
 import Game.Entities.EntityId;
+import Game.GameStates.State;
 import Game.Inventories.Inventory;
 import Game.Items.Item;
 import Main.Handler;
@@ -192,6 +193,7 @@ public class Boss extends CreatureBase {
 	@Override
 	public void die() {
 		this.setActive(false);
+		State.setState(handler.getGame().WinState);
 
 	}
 }
